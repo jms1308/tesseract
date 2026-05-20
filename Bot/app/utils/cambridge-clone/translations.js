@@ -143,21 +143,7 @@ const translations = {
         form_submit: "Yuborish",
         form_success: "Rahmat! Tez orada siz bilan bog'lanamiz.",
         form_placeholder_name: "Ism va familiyangizni kiriting",
-        form_placeholder_phone: "+998 90 123 45 67",
-        seo_guide_title: "<span class=\"text-blue\">BATAFSIL</span> MA'LUMOTLAR VA QO'LLANMA",
-        seo_guide_subtitle: "ACCA kursi, imtihon topshirish, darajalar va karyera bo'yicha to'liq qo'llanma",
-        seo_card1_title: "ACCA Nima va u kimga kerak?",
-        seo_card1_text: "Zamonaviy mehnat bozorida moliya, audit va buxgalteriya sohasidagi xalqaro sertifikatlar mutaxassislar uchun ulkan imkoniyatlar eshigini ochmoqda. Agar siz <b>Toshkentda ACCA o'qish</b> yoki xalqaro standartlar kursi bo'yicha malaka oshirishni rejalashtirayotgan bo'lsangiz, <b>Vens Academy</b> tayyorlov markazi sizga eng to'g'ri va sifatli ta'lim yo'lini taklif etadi. Ushbu dastur universitetdan keyin ACCA o'qish istagida bo'lgan yoshlar, iqtisod fakulteti talabalari hamda o'z maoshlarini oshirmoqchi bo'lgan tajribali mutaxassislar uchun juda muhimdir.",
-        seo_card2_title: "ACCA Darajalari va Bosqichlari (Acca Papers)",
-        seo_card2_text: "ACCA kursi uchta asosiy bosqichdan iborat:<br>1. <b>Applied Knowledge</b>: bularga ACCA F1 Business and Technology, ACCA F2 Management Accounting va ACCA F3 Financial Accounting fanlari kiradi. Bu bosqich moliya olamiga kirish bo'lib, ACCA F3 o'zbek tilida darslar yordamida ham o'rganilishi mumkin.<br>2. <b>Applied Skills</b>: bu yerda ACCA F4 Corporate Law, ACCA F5 Performance Management, ACCA F6 Taxation, ACCA F7 Financial Reporting, ACCA F8 Audit and Assurance va ACCA F9 Financial Management o'qitiladi.<br>3. <b>Strategic Professional</b>: bularga ACCA SBL (Strategic Business Leader), ACCA SBR (Strategic Business Reporting) hamda AFM, APM, ATX, AAA kabi tanlov fanlari kiradi. Shuningdek, talabalar ACCA Oxford Brookes universiteti bakalavr diplom darajasini ham qo'lga kiritishlari mumkin.",
-        seo_card3_title: "Imtihon topshirish va myACCA tizimi",
-        seo_card3_text: "Imtihonlarni topshirish uchun <b>myACCA portal</b> orqali <b>myACCA ro'yxatdan o'tish</b> va account ochish kerak bo'ladi. Muvaffaqiyatli <b>myACCA login Uzbekistan</b> orqali tizimga kirgach, ACCA imtihon sanalari 2026 va ACCA registration jarayonlari bilan tanishishingiz mumkin. Imtihonlar asosan <b>ACCA CBE (computer based exam)</b> shaklida bo'lib o'tadi va imtihon narxi topshiriladigan fanga qarab belgilanadi. O'zbekistonda ACCA TSUE exemption olish kabi imtiyozlar ham mavjud bo'lib, bu talabalarga ba'zi fanlardan ozod bo'lish (exemption olish) imkonini beradi.",
-        seo_card4_title: "O'qish formati: Onlayn va Oflayn",
-        seo_card4_text: "<b>Vensacademy.uz</b> orqali siz o'zingizga qulay o'qish formatini tanlashingiz mumkin:<br>- <b>ACCA onlayn kurs</b> va masofaviy ta'lim: uydan turib, ACCA F1 uydan tayyorlanish yoki video darslar ko'rish orqali bilim olishingiz mumkin.<br>- Oflayn kurs Toshkent: Chilonzor, Yunusobod va Yashnobod kabi qulay hududlarda joylashgan filiallarimizda individual darslar yoki guruh darslari formatida o'qish mumkin.<br>- Crash course va revision course: imtihon oldidan tezlashtirilgan takrorlash va bepul dars variantlari. Darslar o'zbek tilida, rus tilida hamda ingliz tilida olib boriladi.",
-        seo_card5_title: "Kurs narxlari, chegirmalar va Karyera",
-        seo_card5_text: "Ko'pchilikni ACCA o'qish qancha turadi degan savol qiziqtiradi. Vens Academy o'quv markazida ACCA kurs narxi juda hamyonbop bo'lib, bo'lib to'lash va maxsus grant (scholarship) dasturlari ham mavjud. ACCA tugatgach qayerda ishlash mumkin? Bitiruvchilarimiz <b>Big 4 O'zbekiston</b> (PwC, EY, Deloitte, KPMG Toshkent) kompaniyalarida audit ishi, moliya tahlili yoki bosh buxgalter sifatida yuqori maoshli vakansiyalarga ega bo'lishadi. O'zbekistonda ACCA mutaxassisi maoshi ancha yuqori bo'lib, ACCA CV namuna asosida tayyorlangan rezyume bilan xalqaro kompaniyalarda oson ish topishingiz mumkin.",
-        seo_card6_title: "Kvalifikatsiyalarni taqqoslash",
-        seo_card6_text: "Ko'pchilik <b>ACCA yoki CIMA</b>, CFA, CPA yoki DipIFR farqlarini so'rashadi. DipIFR Toshkent (MHXS/IFRS bo'yicha global diplom) va CIMA kursi ko'proq boshqaruv hisobiga yo'naltirilgan. Vens Academy saytida buxgalter kursi Toshkent, 1C buxgalter kursi, IFRS kursi, soliq kursi, moliyaviy menejment kursi va MSFO Toshkent dasturlari bo'yicha ham konsultatsiya hamda bepul maslahat olishingiz mumkin."
+        form_placeholder_phone: "+998 90 123 45 67"
     },
     ru: {
         promo_text: "Идет набор студентов в группы.",
@@ -247,7 +233,7 @@ const translations = {
         achievers_title: "НАШИ ЛУЧШИЕ ВЫПУСКНИКИ",
         achievers_desc: "Ознакомьтесь с результатами наших студентов, успешно сдавших экзамены ACCA",
         work_students_title: "<span class=\"text-blue\">НАШИ</span> РАБОТАЮЩИЕ СТУДЕНТЫ",
-        work_students_desc: "Наши успешные выпускники продолжают свою деятельность в престижные компании",
+        work_students_desc: "Наши успешные выпускники продолжают свою деятельность в престижных компаниях",
         btn_view_all: "Смотреть всех",
         instructors_title: "НАШИ ПРЕПОДАВАТЕЛИ",
         instructors_desc: "Познакомьтесь с настоящими экспертами своего дела",
@@ -303,20 +289,6 @@ const translations = {
         form_submit: "Отправить",
         form_success: "Спасибо! Мы свяжемся с вами в ближайшее время.",
         form_placeholder_name: "Введите ваше ФИО",
-        form_placeholder_phone: "+998 90 123 45 67",
-        seo_guide_title: "<span class=\"text-blue\">ПОДРОБНОЕ</span> РУКОВОДСТВО И СТАТЬИ",
-        seo_guide_subtitle: "Полное руководство по курсу ACCA, сдаче экзаменов, уровням и карьере в Узбекистане",
-        seo_card1_title: "Что такое ACCA и кому это нужно?",
-        seo_card1_text: "На современном рынке труда международные сертификации в сфере финансов, аудита и бухгалтерии пользуются огромным спросом. Если вы планируете пройти <b>ACCA курсы Ташкент</b>, обучение МСФО или подготовиться к экзаменам <b>Дипифр Ташкент</b>, учебный центр <b>Vens Academy</b> предлагает качественную и структуру обучения. Подготовка по программе ACCA полезна как для начинающих специалистов, желающих изучить основы финансового учета (например, ACCA F3 на узбекском или русском языках), так и для опытных финансовых менеджеров, стремящихся повысить свою квалификацию.",
-        seo_card2_title: "Этапы и экзамены ACCA (Papers)",
-        seo_card2_text: "Полный курс обучения ACCA делится на три ключевых этапа:<br>1. <b>Applied Knowledge</b>: включает в себя экзамены ACCA F1 Business and Technology, ACCA F2 Management Accounting и ACCA F3 Financial Accounting.<br>2. <b>Applied Skills</b>: охватывает F4 Corporate Law, F5 Performance Management, F6 Taxation, F7 Financial Reporting, F8 Audit and Assurance и F9 Financial Management.<br>3. <b>Strategic Professional</b>: включает в себя обязательные предметы SBL (Strategic Business Leader) и SBR (Strategic Business Reporting), а также специализированные курсы AFM, APM, ATX, AAA. Успешные студенты также могут претендовать на получение диплома бакалавра Oxford Brookes.",
-        seo_card3_title: "Сдача экзаменов и личный кабинет MyACCA",
-        seo_card3_text: "Для регистрации на экзамены кандидатам необходимо создать личный кабинет на официальном портале <b>myACCA регистрация</b> и получить доступ к <b>myACCA login</b>. Через личный кабинет отслеживаются даты экзаменов ACCA экзамен Ташкент на 2026 год, оплачиваются взносы (регистрация цена) и подаются документы на освобождение от экзаменов (ACCA exemption). Экзамены проводятся в компьютерном формате (CBE - computer based exam) в специализированных центрах в Ташкенте.",
-        seo_card4_title: "Форматы обучения: ACCA онлайн и офлайн",
-        seo_card4_text: "Учебный центр Vens Academy предлагает гибкие форматы обучения:<br>- <b>ACCA онлайн</b> подготовка: видеоуроки, дистанционные курсы, возможность учиться самостоятельно дома (например, самостоятельная подготовка к ACCA F1).<br>- Офлайн-курсы в Ташкенте: занятия проводятся в современных аудиториях в малых группах с опытными лекторами и менторами (Chilonzor, Yunusobod, Yashnobod). Слушателям доступны курсы на русском, узбекском и английском языках. Вы можете записаться на бесплатную консультацию и пройти пробный демо-урок.",
-        seo_card5_title: "Цены, оплата и карьерные перспективы",
-        seo_card5_text: "Стоимость обучения на курсах ACCA в Узбекистане зависит от выбранного направления и формата. Vens Academy предоставляет удобные условия оплаты, включая возможность оплаты в рассрочку (ACCA bolib tolash), а также гранты и скидки для лучших студентов. Специалисты с квалификацией ACCA и Дипифр получают значительно более высокие зарплаты в Узбекистане. С грамотно составленным резюме (ACCA CV namuna) вы сможете претендовать на позиции главного бухгалтера, финансового аналитика или аудитора в международных корпорациях.",
-        seo_card6_title: "Сравнение квалификаций: ACCA, CIMA, CFA",
-        seo_card6_text: "Часто перед студентами стоит выбор: <b>ACCA или CIMA</b>, CFA, CPA. Каждая квалификация имеет свои особенности: ACCA больше сфокусирована на аудите и финансовой отчетности, CIMA — на управленческом учете, а CFA — на инвестиционном анализе. В Vens Academy вы также можете пройти курсы бухгалтера Ташкент, обучение 1С, курсы по налогам и МСФО в Ташкенте. Мы поможем вам выбрать оптимальную траекторию развития."
+        form_placeholder_phone: "+998 90 123 45 67"
     }
 };
