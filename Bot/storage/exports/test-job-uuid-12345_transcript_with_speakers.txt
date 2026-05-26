@@ -1,5 +1,0 @@
-[00:00:01 - 00:00:08] Manager (Sarah): Hello everyone, welcome to our weekly project sync. Today we are discussing the Telegram transcriber launch.
-[00:00:10 - 00:00:18] Abdulloh (Developer): Thanks. I have finalized the database schemas and the Celery workers. The docker setup is also ready.
-[00:00:19 - 00:00:25] Manager (Sarah): Excellent! Abdulloh, what about the Hugging Face pyannote token for speaker identification?
-[00:00:25 - 00:00:35] Abdulloh (Developer): Yes, we need to accept terms on their model card page. Once that is done, the token will authorize the diarization task.
-[00:00:36 - 00:00:45] Manager (Sarah): Great, let's aim to deploy the production build by Friday. I will verify the bot features tomorrow.

@@ -3840,3 +3840,126 @@ nav.main-nav a:hover::before {
   }
 }
 
+/* ===== SEO ACCORDION ===== */
+.seo-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 860px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.07);
+}
+
+.seo-acc-item {
+  background: #fff;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.2s ease;
+}
+
+.seo-acc-item:last-child {
+  border-bottom: none;
+}
+
+.seo-acc-item.open {
+  background: #fafcff;
+}
+
+.seo-acc-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+  outline: none;
+}
+
+.seo-acc-question:hover {
+  background: #f8faff;
+}
+
+.seo-acc-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(30, 184, 252, 0.1);
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.seo-acc-item.open .seo-acc-icon {
+  background: var(--primary-blue);
+  color: #fff;
+}
+
+.seo-acc-title {
+  flex: 1;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+.seo-acc-chevron {
+  flex-shrink: 0;
+  color: #94a3b8;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.seo-acc-item.open .seo-acc-chevron {
+  transform: rotate(180deg);
+  color: var(--primary-blue);
+}
+
+.seo-acc-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.seo-acc-item.open .seo-acc-answer {
+  max-height: 1000px;
+}
+
+.seo-acc-answer-inner {
+  padding: 0 28px 24px 84px;
+  color: #475569;
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.seo-acc-answer-inner b {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .seo-acc-question {
+    padding: 18px 20px;
+    gap: 12px;
+  }
+  .seo-acc-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .seo-acc-title {
+    font-size: 0.95rem;
+  }
+  .seo-acc-answer-inner {
+    padding: 0 20px 20px 68px;
+    font-size: 0.92rem;
+  }
+}
