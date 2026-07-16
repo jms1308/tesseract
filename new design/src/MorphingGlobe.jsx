@@ -91,11 +91,11 @@ export default function MorphingGlobe() {
     let angleX = 0.5;
     let angleY = 0.5;
     
-    // Rotation velocities
-    let rotSpeedX = 0.0015;
-    let rotSpeedY = 0.003;
-    let targetSpeedX = 0.0015;
-    let targetSpeedY = 0.003;
+    // Rotation velocities (reduced for slower, uniform rotation)
+    let rotSpeedX = 0.0005;
+    let rotSpeedY = 0.0008;
+    let targetSpeedX = 0.0005;
+    let targetSpeedY = 0.0008;
 
     // Mouse drag/track state
     let isDragging = false;
@@ -111,12 +111,12 @@ export default function MorphingGlobe() {
 
     const handleMouseMove = (e) => {
       if (!isDragging) {
-        // Subtle hover influence on rotation speed
+        // Subtle hover influence on rotation speed (damped for large screens)
         const rect = canvas.getBoundingClientRect();
         const mx = e.clientX - rect.left - rect.width / 2;
         const my = e.clientY - rect.top - rect.height / 2;
-        targetSpeedY = 0.003 + mx * 0.00002;
-        targetSpeedX = 0.0015 - my * 0.00001;
+        targetSpeedY = 0.0008 + mx * 0.000002;
+        targetSpeedX = 0.0005 - my * 0.000001;
         return;
       }
       const rect = canvas.getBoundingClientRect();
@@ -135,8 +135,8 @@ export default function MorphingGlobe() {
 
     const handleMouseUp = () => {
       isDragging = false;
-      targetSpeedX = 0.0015;
-      targetSpeedY = 0.003;
+      targetSpeedX = 0.0005;
+      targetSpeedY = 0.0008;
     };
 
     canvas.addEventListener('mousedown', handleMouseDown);
@@ -187,8 +187,8 @@ export default function MorphingGlobe() {
         angleX += rotSpeedX;
         angleY += rotSpeedY;
       } else {
-        rotSpeedX = 0.0015;
-        rotSpeedY = 0.003;
+        rotSpeedX = 0.0005;
+        rotSpeedY = 0.0008;
       }
 
       // Animate morph factor based on target shape
@@ -325,11 +325,11 @@ export default function MorphingGlobe() {
     };
   }, []);
 
-  // Automorph toggling with custom timings
+  // Automorph toggling with custom timings (Globe: 3 seconds, Cube: 5 seconds)
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShape(prev => prev === 'sphere' ? 'cube' : 'sphere');
-    }, shape === 'sphere' ? 4000 : 10000);
+    }, shape === 'sphere' ? 3000 : 5000);
     return () => clearTimeout(timeout);
   }, [shape]);
 
