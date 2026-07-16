@@ -325,13 +325,13 @@ export default function MorphingGlobe() {
     };
   }, []);
 
-  // Automorph toggling every 10 seconds
+  // Automorph toggling with custom timings
   useEffect(() => {
-    const interval = setInterval(() => {
+    const timeout = setTimeout(() => {
       setShape(prev => prev === 'sphere' ? 'cube' : 'sphere');
-    }, 10000);
-    return () => clearInterval(interval);
-  }, []);
+    }, shape === 'sphere' ? 4000 : 10000);
+    return () => clearTimeout(timeout);
+  }, [shape]);
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-full select-none">
