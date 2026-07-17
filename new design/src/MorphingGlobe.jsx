@@ -14,11 +14,11 @@ export default function MorphingGlobe() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    
+
     let animationFrameId;
     let width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
     let height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-    
+
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
@@ -27,7 +27,8 @@ export default function MorphingGlobe() {
     window.addEventListener('resize', handleResize);
 
     const particleCount = 600;
-    const radius = 240;
+    const isMobile = window.innerWidth < 768;
+    const radius = isMobile ? 170 : 230;
     const particles = [];
 
     // 1. Generate Sphere points (Fibonacci Sphere)
@@ -46,20 +47,20 @@ export default function MorphingGlobe() {
     const cubePoints = [];
     const pointsPerFace = Math.floor(particleCount / 6);
     const gridSize = Math.floor(Math.sqrt(pointsPerFace)); // around 9 or 10
-    
+
     for (let i = 0; i < particleCount; i++) {
       const face = Math.floor(i / pointsPerFace) % 6;
       const faceIdx = i % pointsPerFace;
       const row = Math.floor(faceIdx / gridSize);
       const col = faceIdx % gridSize;
-      
+
       // Normalize to [-1, 1]
       const u = ((row + 0.5) / gridSize) * 2 - 1;
       const v = ((col + 0.5) / gridSize) * 2 - 1;
-      
+
       const half = radius * 0.95; // slightly smaller than sphere radius for nice transition proportion
       let cx = 0, cy = 0, cz = 0;
-      
+
       if (face === 0) { cx = half; cy = u * half; cz = v * half; }
       else if (face === 1) { cx = -half; cy = u * half; cz = v * half; }
       else if (face === 2) { cy = half; cx = u * half; cz = v * half; }
@@ -90,7 +91,7 @@ export default function MorphingGlobe() {
     // Rotation state
     let angleX = 0.5;
     let angleY = 0.5;
-    
+
     // Rotation velocities (reduced for slower, uniform rotation)
     let rotSpeedX = 0.0005;
     let rotSpeedY = 0.0008;
@@ -122,13 +123,13 @@ export default function MorphingGlobe() {
       const rect = canvas.getBoundingClientRect();
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
-      
+
       const deltaX = mx - prevMouseX;
       const deltaY = my - prevMouseY;
-      
+
       angleY += deltaX * 0.005;
       angleX += deltaY * 0.005;
-      
+
       prevMouseX = mx;
       prevMouseY = my;
     };
@@ -208,7 +209,7 @@ export default function MorphingGlobe() {
 
       for (let i = 0; i < particleCount; i++) {
         const p = particles[i];
-        
+
         // Morph interpolation
         const mx = p.sx * (1 - morphFactor) + p.cx * morphFactor;
         const my = p.sy * (1 - morphFactor) + p.cy * morphFactor;
@@ -217,7 +218,7 @@ export default function MorphingGlobe() {
         // Apply 3D rotation (Y-axis, then X-axis)
         const xY = mx * cosY - mz * sinY;
         const zY = mx * sinY + mz * cosY;
-        
+
         const rotatedX = xY;
         const rotatedY = my * cosX - zY * sinX;
         const rotatedZ = my * sinX + zY * cosX;
@@ -242,18 +243,18 @@ export default function MorphingGlobe() {
       // Draw network grid lines between nearby particles
       ctx.lineWidth = 0.5;
       const connectionDistance = 45 * scaleMultiplier;
-      
+
       // We check connections on a subset to keep performance smooth (60fps)
       for (let i = 0; i < particleCount; i += 3) {
         const p1 = renderedParticles[i];
         if (p1.z > 150) continue; // skip particles far in the back for connections
-        
+
         for (let j = i + 1; j < particleCount; j += 6) {
           const p2 = renderedParticles[j];
           const dx = p1.x - p2.x;
           const dy = p1.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          
+
           if (dist < connectionDistance) {
             const alpha = (1 - dist / connectionDistance) * 0.12 * (1 - (p1.z + 100) / 400);
             if (alpha > 0) {
@@ -275,7 +276,7 @@ export default function MorphingGlobe() {
         const p = renderedParticles[i];
         const baseSize = 2.2;
         const size = Math.max(0.5, baseSize * p.scale);
-        
+
         // Dynamic glowing colors (mixture of 2 distinct orange/yellow/amber shades in each state)
         let r, g, b;
         if (p.colorFactor < 0.5) {
@@ -293,7 +294,7 @@ export default function MorphingGlobe() {
         // Depth dimming (fog)
         const depthAlpha = Math.max(0.15, 1 - (p.z + 150) / 350);
         ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${depthAlpha})`;
-        
+
         // Draw particle dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
@@ -325,27 +326,22 @@ export default function MorphingGlobe() {
     };
   }, []);
 
-  // Automorph toggling with custom timings (Globe: 3 seconds, Cube: 5 seconds)
+  // Automorph toggling with custom timings (Globe: 3 seconds, Cube: 4 seconds)
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShape(prev => prev === 'sphere' ? 'cube' : 'sphere');
-    }, shape === 'sphere' ? 3000 : 5000);
+    }, shape === 'sphere' ? 3000 : 4000);
     return () => clearTimeout(timeout);
   }, [shape]);
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-full select-none">
       {/* 3D Canvas */}
-      <canvas 
-        ref={canvasRef} 
-        className="w-[600px] h-[600px] max-w-full aspect-square cursor-grab active:cursor-grabbing"
+      <canvas
+        ref={canvasRef}
+        className="w-[340px] h-[340px] md:w-[600px] md:h-[600px] max-w-full aspect-square cursor-grab active:cursor-grabbing"
       />
 
-      {/* Interactivity Indicator */}
-      <span className="absolute top-2 right-4 text-[10px] uppercase tracking-wider text-neutral-500 font-mono flex items-center gap-1.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-        Interactive 3D View
-      </span>
     </div>
   );
 }

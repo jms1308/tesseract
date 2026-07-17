@@ -66,7 +66,7 @@ const ScrollReveal = ({ children, className = "", delay = 0, yOffset = 30, xOffs
   return (
     <div
       ref={ref}
-      className={`${className} transition-all duration-1000 cubic-bezier(0.16, 1, 0.3, 1)`}
+      className={`${className} transition-all duration-500 cubic-bezier(0.16, 1, 0.3, 1)`}
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translate(0, 0)" : `translate(${xOffset}px, ${yOffset}px)`,
@@ -705,23 +705,34 @@ function App() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-              <Text_03 text="Xizmatlar" className="text-sm font-medium" />
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            <a href="#solutions" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+              <Text_03 text="Xizmatlar" className="text-xs lg:text-sm font-medium" />
             </a>
-            <a href="#about" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-              <Text_03 text="Biz haqimizda" className="text-sm font-medium" />
+            <a href="#partners" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+              <Text_03 text="Hamkorlar" className="text-xs lg:text-sm font-medium" />
             </a>
-            <a href="#portfolio" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-              <Text_03 text="Portfolio" className="text-sm font-medium" />
+            <a href="#why-us" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+              <Text_03 text="Afzalliklar" className="text-xs lg:text-sm font-medium" />
             </a>
-            <a href="#contact" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-              <Text_03 text="Kontakt" className="text-sm font-medium" />
+            <a href="#metrics" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+              <Text_03 text="Natijalar" className="text-xs lg:text-sm font-medium" />
+            </a>
+            <a href="#contact" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+              <Text_03 text="Bog'lanish" className="text-xs lg:text-sm font-medium" />
             </a>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <button className="relative px-5 py-2 rounded-full border border-orange-500/50 text-orange-400 hover:bg-orange-500 hover:text-white font-semibold text-xs transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/10 flex items-center gap-1 group">
+            <button 
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="relative px-5 py-2 rounded-full border border-orange-500/50 text-orange-400 hover:bg-orange-500 hover:text-white font-semibold text-xs transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/10 flex items-center gap-1 group cursor-pointer"
+            >
               <Text_03 text="Bog'lanish" className="font-semibold text-xs" /> <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
@@ -729,57 +740,77 @@ function App() {
           {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-neutral-400 hover:text-white"
+            className="md:hidden p-2 text-neutral-400 hover:text-white z-50 relative"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-6 h-6 animate-in fade-in zoom-in duration-300" /> : <Menu className="w-6 h-6 animate-in fade-in zoom-in duration-300" />}
           </button>
         </div>
 
-        {/* Mobile Navigation Dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-2 border border-white/10 bg-[#05020a]/90 backdrop-blur-lg px-6 py-6 flex flex-col gap-4 rounded-2xl w-full z-40">
-            <a 
-              href="#services" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-base text-neutral-300 hover:text-white transition-colors"
-            >
-              <Text_03 text="Xizmatlar" className="text-base font-medium" />
-            </a>
-            <a 
-              href="#about" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-base text-neutral-300 hover:text-white transition-colors"
-            >
-              <Text_03 text="Biz haqimizda" className="text-base font-medium" />
-            </a>
-            <a 
-              href="#portfolio" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-base text-neutral-300 hover:text-white transition-colors"
-            >
-              <Text_03 text="Portfolio" className="text-base font-medium" />
-            </a>
-            <a 
-              href="#contact" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-base text-neutral-300 hover:text-white transition-colors"
-            >
-              <Text_03 text="Kontakt" className="text-base font-medium" />
-            </a>
-            <hr className="border-white/10 my-1" />
-            <button className="w-full text-center py-2.5 bg-gradient-to-r from-orange-500 via-amber-500 to-red-500 text-white font-bold rounded-full flex items-center justify-center gap-2 group">
-              <Text_03 text="Bog'lanish" className="font-bold text-base" /> <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
-          </div>
-        )}
+        {/* Mobile Navigation Dropdown with smooth animated transition */}
+        <div 
+          className={`md:hidden absolute left-4 right-4 top-20 border border-white/10 bg-[#05020a]/95 backdrop-blur-xl px-6 py-8 flex flex-col gap-5 rounded-3xl transition-all duration-500 ease-out origin-top ${
+            mobileMenuOpen 
+              ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' 
+              : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'
+          }`}
+        >
+          <a 
+            href="#solutions" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
+          >
+            <Text_03 text="Xizmatlar" className="text-lg font-medium" />
+          </a>
+          <a 
+            href="#partners" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
+          >
+            <Text_03 text="Hamkorlar" className="text-lg font-medium" />
+          </a>
+          <a 
+            href="#why-us" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
+          >
+            <Text_03 text="Afzalliklar" className="text-lg font-medium" />
+          </a>
+          <a 
+            href="#metrics" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
+          >
+            <Text_03 text="Natijalar" className="text-lg font-medium" />
+          </a>
+          <a 
+            href="#contact" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 pb-1"
+          >
+            <Text_03 text="Bog'lanish" className="text-lg font-medium" />
+          </a>
+          <hr className="border-white/10 my-1" />
+          <button 
+            onClick={() => {
+              setMobileMenuOpen(false);
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="w-full text-center py-3.5 bg-gradient-to-r from-orange-500 via-amber-500 to-red-500 text-white font-bold rounded-full flex items-center justify-center gap-2 group shadow-lg shadow-orange-500/20 active:scale-95 transition-all cursor-pointer"
+          >
+            <Text_03 text="Bog'lanish" className="font-bold text-base" /> <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative max-w-7xl mx-auto px-6 min-h-screen flex items-center justify-center z-10 pt-20">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8 w-full">
+      <section className="relative max-w-7xl mx-auto px-6 min-h-screen flex items-center justify-center z-10 pt-28 pb-12 md:pt-20 md:pb-0">
+        <div className="flex flex-col lg:flex-row items-center gap-4 md:gap-8 w-full">
           
           {/* Left Hero Content */}
-          <ScrollReveal className="flex-1 flex flex-col items-start text-left max-w-2xl lg:pl-16" delay={150}>
+          <ScrollReveal className="flex-1 flex flex-col items-start text-left max-w-2xl lg:pl-16 mt-2 md:mt-0" delay={150}>
             {/* Main Headline */}
             <h1 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-[66px] tracking-tight leading-[1.15] mb-6 text-white flex flex-wrap items-center gap-x-3 gap-y-1">
               <span>Biznesingizni</span> <br />
@@ -795,7 +826,7 @@ function App() {
           </ScrollReveal>
 
           {/* Right — Globe & Morphing Cube Visualization */}
-          <ScrollReveal className="flex-1 flex items-center justify-center p-4 md:p-0 min-h-[550px] w-full relative" delay={300} yOffset={45}>
+          <ScrollReveal className="flex-1 flex items-center justify-center p-4 md:p-0 min-h-[300px] md:min-h-[550px] w-full relative" delay={300} yOffset={45}>
             <div className="absolute inset-0 bg-radial-gradient opacity-80 blur-xl pointer-events-none scale-75" />
             <div className="relative w-full max-w-[760px] aspect-square flex items-center justify-center">
               <MorphingGlobe />
@@ -806,7 +837,7 @@ function App() {
       </section>
 
       {/* Solutions Section */}
-      <section className="relative border-t border-white/5 bg-[#05020a] py-12 lg:py-16 z-10 overflow-hidden" id="solutions">
+      <section className="relative border-t border-white/5 bg-[#05020a] pt-4 pb-12 md:py-16 z-10 overflow-hidden" id="solutions">
         {/* Background glow behind cards on the left */}
         <div className="absolute left-[-100px] top-[10%] w-[350px] h-[350px] bg-orange-500/15 rounded-full blur-[80px] pointer-events-none z-0 mix-blend-screen" />
         <div className="absolute left-[-40px] top-[50%] -translate-y-1/2 w-[200px] h-[350px] bg-amber-500/5 rounded-full blur-[60px] pointer-events-none z-0" />
@@ -881,7 +912,8 @@ function App() {
           </ScrollReveal>
           
           <ScrollReveal delay={200} yOffset={40}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {/* Desktop Grid Layout */}
+            <div className="hidden md:grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {partners.map((partner) => (
                 <div 
                   key={partner.name}
@@ -893,6 +925,61 @@ function App() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Mobile Infinite Scrolling Tickers (Three rows) */}
+            <div className="md:hidden flex flex-col gap-3 overflow-hidden relative w-[calc(100%+3rem)] -mx-6 py-2">
+              {/* Fade masks for edges */}
+              <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-[#05020a] to-transparent z-20 pointer-events-none" />
+              <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-[#05020a] to-transparent z-20 pointer-events-none" />
+
+              {/* Row 1 */}
+              <div className="flex overflow-hidden w-full">
+                <div className="animate-marquee flex gap-2 pr-2">
+                  {[...partners.slice(0, 5), ...partners.slice(0, 5), ...partners.slice(0, 5)].map((partner, idx) => (
+                    <div 
+                      key={`${partner.name}-r1-${idx}`}
+                      className="flex items-center justify-center px-3 py-2 rounded-xl border border-white/5 bg-white/[0.01] backdrop-blur-sm min-w-[110px] h-[55px]"
+                    >
+                      <div className="opacity-60 scale-75">
+                        {partner.logo}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Row 2 */}
+              <div className="flex overflow-hidden w-full">
+                <div className="animate-marquee-fast flex gap-2 pr-2">
+                  {[...partners.slice(5, 10), ...partners.slice(5, 10), ...partners.slice(5, 10)].map((partner, idx) => (
+                    <div 
+                      key={`${partner.name}-r2-${idx}`}
+                      className="flex items-center justify-center px-3 py-2 rounded-xl border border-white/5 bg-white/[0.01] backdrop-blur-sm min-w-[110px] h-[55px]"
+                    >
+                      <div className="opacity-60 scale-75">
+                        {partner.logo}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Row 3 */}
+              <div className="flex overflow-hidden w-full">
+                <div className="animate-marquee-slow flex gap-2 pr-2">
+                  {[...partners.slice(10, 15), ...partners.slice(10, 15), ...partners.slice(10, 15)].map((partner, idx) => (
+                    <div 
+                      key={`${partner.name}-r3-${idx}`}
+                      className="flex items-center justify-center px-3 py-2 rounded-xl border border-white/5 bg-white/[0.01] backdrop-blur-sm min-w-[110px] h-[55px]"
+                    >
+                      <div className="opacity-60 scale-75">
+                        {partner.logo}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </ScrollReveal>
         </div>
@@ -912,7 +999,7 @@ function App() {
               <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
                 Nima uchun{" "}
                 <span className="relative inline-block mx-1">
-                  30 dan ortiq
+                  70 dan ortiq
                   <span className="absolute left-0 bottom-[-4px] w-full h-[3px] bg-gradient-to-r from-orange-500 to-amber-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.5)]" />
                 </span>{" "}
                 ekspert va tadbirkorlar bizni tanlashgan?
@@ -982,11 +1069,11 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* 1. Client growth 180% */}
-            <ScrollReveal className="lg:col-span-2 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 relative overflow-hidden group hover:border-orange-500/20 transition-all duration-300" delay={150}>
+            <ScrollReveal className="md:col-span-2 lg:col-span-2 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-orange-500/30 hover:bg-[#0c0816] hover:shadow-[0_0_35px_rgba(249,115,22,0.12)] hover:-translate-y-1.5 transition-all duration-500" delay={150}>
               <div className="absolute top-0 right-0 w-48 h-48 bg-orange-500/5 rounded-full blur-3xl group-hover:bg-orange-500/10 transition-all duration-500 pointer-events-none" />
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 h-full">
                 <div className="space-y-4 max-w-md">
-                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
+                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-500">
                     <TrendingUp className="w-5 h-5" />
                   </div>
                   <h3 className="text-lg font-bold text-neutral-300">Mijoz oqimi & Taniqlilik o'sishi</h3>
@@ -994,10 +1081,10 @@ function App() {
                     Mijozlarimiz biz bilan ishlagandan so'ng brend orqali keladigan mijoz oqimi va brend taniqliligi o'rtacha 1.8 barobarga oshadi.
                   </p>
                 </div>
-                <div className="flex flex-col items-center md:items-end justify-center">
-                  <span className="text-6xl sm:text-7xl font-display font-black text-white tracking-tighter bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-500">180%</span>
+                <div className="flex flex-col items-center md:items-end justify-center w-full md:w-auto">
+                  <span className="text-5xl sm:text-7xl font-display font-black text-white tracking-tighter bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-500">180%</span>
                   {/* Mini graph SVG */}
-                  <svg className="w-32 h-12 text-orange-500 mt-2" viewBox="0 0 120 40" fill="none">
+                  <svg className="w-32 h-12 text-orange-500 mt-2 group-hover:scale-105 group-hover:text-amber-400 transition-all duration-500" viewBox="0 0 120 40" fill="none">
                     <path d="M0 35C20 30 30 15 50 12C70 9 80 5 120 2" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
                     <circle cx="120" cy="2" r="4" fill="currentColor" />
                   </svg>
@@ -1006,11 +1093,11 @@ function App() {
             </ScrollReveal>
 
             {/* 2. Video quality TOP 10% */}
-            <ScrollReveal className="lg:col-span-1 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 relative overflow-hidden group hover:border-orange-500/20 transition-all duration-300" delay={200}>
+            <ScrollReveal className="md:col-span-1 lg:col-span-1 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-orange-500/30 hover:bg-[#0c0816] hover:shadow-[0_0_35px_rgba(249,115,22,0.12)] hover:-translate-y-1.5 transition-all duration-500" delay={200}>
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl pointer-events-none" />
               <div className="flex flex-col justify-between h-full gap-8">
                 <div className="space-y-4">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-500 group-hover:text-white group-hover:border-amber-500 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-all duration-500">
                     <Video className="w-5 h-5" />
                   </div>
                   <h3 className="text-lg font-bold text-neutral-300">Video Production sifati</h3>
@@ -1018,11 +1105,11 @@ function App() {
                     Bizning video mahsulotlarimiz sifat va kreativlik bo'yicha O'zbekistonda yetakchi 10% talik reytingga kiradi.
                   </p>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-4xl font-display font-black text-white tracking-tight">TOP 10%</span>
+                <div className="flex items-center justify-between w-full">
+                  <span className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight group-hover:text-amber-400 transition-colors duration-500">TOP 10%</span>
                   {/* Flashing REC indicator */}
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-red-500/30 bg-red-500/5 text-[10px] font-mono text-red-500">
-                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-red-500/30 bg-red-500/5 text-[10px] font-mono text-red-500 group-hover:border-red-500 group-hover:bg-red-500 group-hover:text-white transition-all duration-500">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse group-hover:bg-white" />
                     <span>REC</span>
                   </div>
                 </div>
@@ -1030,10 +1117,10 @@ function App() {
             </ScrollReveal>
 
             {/* 3. Guarantees 8x */}
-            <ScrollReveal className="lg:col-span-1 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 relative overflow-hidden group hover:border-orange-500/20 transition-all duration-300" delay={250}>
+            <ScrollReveal className="md:col-span-1 lg:col-span-1 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-orange-500/30 hover:bg-[#0c0816] hover:shadow-[0_0_35px_rgba(249,115,22,0.12)] hover:-translate-y-1.5 transition-all duration-500" delay={250}>
               <div className="flex flex-col justify-between h-full gap-8">
                 <div className="space-y-4">
-                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
+                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-500">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <h3 className="text-lg font-bold text-neutral-300">Kafolat ortig'i bilan</h3>
@@ -1041,12 +1128,12 @@ function App() {
                     Aksariyat mijozlarimiz bilan shartnomada kelishilgan kafolatlarimizni kamida 8 barobar ortig'i bilan bajaramiz.
                   </p>
                 </div>
-                <div className="flex items-end justify-between">
-                  <span className="text-5xl font-display font-black text-white">8x</span>
+                <div className="flex items-end justify-between w-full">
+                  <span className="text-4xl sm:text-5xl font-display font-black text-white group-hover:text-orange-400 transition-colors duration-500">8x</span>
                   {/* Led Indicator */}
                   <div className="flex gap-1 mb-2">
                     {[...Array(8)].map((_, i) => (
-                      <div key={i} className="w-1.5 h-6 rounded bg-orange-500/80 animate-pulse" style={{ animationDelay: `${i * 100}ms` }} />
+                      <div key={i} className="w-1.5 h-6 rounded bg-orange-500/80 animate-pulse group-hover:h-8 group-hover:bg-orange-400 transition-all duration-300" style={{ animationDelay: `${i * 100}ms` }} />
                     ))}
                   </div>
                 </div>
@@ -1054,11 +1141,11 @@ function App() {
             </ScrollReveal>
 
             {/* 4. Audience coverage 1,000,000+ */}
-            <ScrollReveal className="lg:col-span-2 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 relative overflow-hidden group hover:border-orange-500/20 transition-all duration-300" delay={300}>
+            <ScrollReveal className="md:col-span-2 lg:col-span-2 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-orange-500/30 hover:bg-[#0c0816] hover:shadow-[0_0_35px_rgba(249,115,22,0.12)] hover:-translate-y-1.5 transition-all duration-500" delay={300}>
               <div className="absolute -right-16 -bottom-16 w-56 h-56 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 h-full">
                 <div className="space-y-4 max-w-md">
-                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
+                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-500">
                     <Users className="w-5 h-5" />
                   </div>
                   <h3 className="text-lg font-bold text-neutral-300">Auditoriya qamrovi (Coverage)</h3>
@@ -1066,23 +1153,23 @@ function App() {
                     Bizning kampaniyalarimiz orqali umumiy hisobda 1,000,000 dan ortiq foydali auditoriya qamrab olindi.
                   </p>
                 </div>
-                <div className="flex flex-col items-center md:items-end justify-center">
-                  <span className="text-4xl sm:text-5xl font-display font-black text-white tracking-tighter bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">1,000,000+</span>
+                <div className="flex flex-col items-center md:items-end justify-center w-full md:w-auto">
+                  <span className="text-3xl sm:text-5xl font-display font-black text-white tracking-tighter bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-500">1,000,000+</span>
                   {/* Radar animation placeholder */}
-                  <div className="w-16 h-16 rounded-full border border-orange-500/20 flex items-center justify-center relative mt-3">
-                    <div className="absolute inset-0 rounded-full border border-orange-500/40 animate-ping [animation-duration:3s]" />
-                    <div className="w-3.5 h-3.5 bg-orange-500 rounded-full" />
+                  <div className="w-16 h-16 rounded-full border border-orange-500/20 flex items-center justify-center relative mt-3 group-hover:border-orange-500/50 group-hover:scale-110 transition-all duration-500">
+                    <div className="absolute inset-0 rounded-full border border-orange-500/40 animate-ping [animation-duration:2s]" />
+                    <div className="w-3.5 h-3.5 bg-orange-500 rounded-full group-hover:bg-orange-400 transition-colors" />
                   </div>
                 </div>
               </div>
             </ScrollReveal>
 
             {/* 5. Sales assisted $500,000+ */}
-            <ScrollReveal className="lg:col-span-3 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 relative overflow-hidden group hover:border-orange-500/20 transition-all duration-300" delay={350}>
+            <ScrollReveal className="md:col-span-2 lg:col-span-3 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-orange-500/30 hover:bg-[#0c0816] hover:shadow-[0_0_35px_rgba(249,115,22,0.12)] hover:-translate-y-1.5 transition-all duration-500" delay={350}>
               <div className="absolute -left-12 -top-12 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 h-full">
                 <div className="space-y-4 max-w-xl">
-                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
+                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-500">
                     <DollarSign className="w-5 h-5" />
                   </div>
                   <h3 className="text-xl font-bold text-neutral-300">Yordam berilgan umumiy sotuvlar</h3>
@@ -1090,8 +1177,8 @@ function App() {
                     Hamkorlarimiz bilan olib borilgan tizimli marketing va savdo strategiyalari natijasida umumiy hisobda 500,000 AQSh dollaridan ortiq sotuvlar hajmini shakllantirdik.
                   </p>
                 </div>
-                <div className="flex flex-col items-center md:items-end justify-center bg-white/[0.02] border border-white/5 px-8 py-6 rounded-2xl backdrop-blur-sm">
-                  <span className="text-5xl font-display font-black text-white">$500,000+</span>
+                <div className="flex flex-col items-center md:items-end justify-center bg-white/[0.02] border border-white/5 px-4 py-4 sm:px-8 sm:py-6 rounded-2xl backdrop-blur-sm w-full md:w-auto group-hover:border-orange-500/30 group-hover:bg-[#05020a]/80 group-hover:shadow-[0_0_25px_rgba(249,115,22,0.1)] transition-all duration-500">
+                  <span className="text-3xl sm:text-5xl font-display font-black text-white group-hover:scale-105 transition-transform duration-500">$500,000+</span>
                   <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider mt-1.5">▲ Live Tracked Metric</span>
                 </div>
               </div>
@@ -1118,12 +1205,27 @@ function App() {
             
             {/* Left side info */}
             <ScrollReveal className="flex-1 space-y-8" delay={100}>
-              <div className="space-y-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-orange-400 font-mono mb-3 block border border-orange-500/30 py-1 px-4 rounded-full bg-orange-500/5 w-fit">
-                  Hamkorlik
-                </span>
+              <div className="space-y-4 text-center md:text-left">
                 <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
-                  Agar hammasi tushunarli bo'lsa, birgina savol qoldi
+                  Agar hammasi tushunarli bo'lsa, birgina{" "}
+                  <span className="relative inline-block px-4 py-1.5 mx-1">
+                    <span className="relative z-10 text-white">savol</span>
+                    <svg 
+                      className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105" 
+                      viewBox="0 0 100 40" 
+                      preserveAspectRatio="none"
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    >
+                      <path 
+                        d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11" 
+                      />
+                    </svg>
+                  </span>{" "}
+                  qoldi
                 </h2>
                 <p className="text-neutral-400 text-sm md:text-base leading-relaxed font-light">
                   Manfaatli hamkorlik qilishga tayyormisiz? Agar javobingiz ha bo'lsa biz shu yerdamiz.
@@ -1131,7 +1233,7 @@ function App() {
               </div>
 
               {/* Competitor warning box */}
-              <div className="bg-red-500/5 border border-red-500/10 rounded-2xl p-6 relative overflow-hidden max-w-md">
+              <div className="bg-red-500/5 border border-red-500/10 rounded-2xl p-6 relative overflow-hidden max-w-md mx-auto md:mx-0 text-left">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full blur-2xl pointer-events-none" />
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 flex-shrink-0 animate-pulse">
@@ -1157,24 +1259,179 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 bg-[#050505]/90 py-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center text-white">
-              <Zap className="w-4 h-4" />
+      <footer className="relative z-10 px-4 pb-12 mt-12" id="footer">
+        <div className="max-w-7xl mx-auto rounded-[2.5rem] border border-white/5 bg-[#0b0813]/60 backdrop-blur-md p-8 md:p-16 relative overflow-hidden shadow-2xl">
+          {/* Ambient Glows */}
+          <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -right-20 -top-20 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+
+          {/* Top Row: Brand Info and Main Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-12 border-b border-white/5">
+            {/* Brand Left Column */}
+            <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
+                    <Zap className="w-5 h-5 animate-pulse" />
+                  </div>
+                  <span className="font-display font-extrabold text-xl tracking-wider bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent leading-none text-left">
+                    TESSERACT<br />
+                    <span className="text-[9px] uppercase tracking-[0.3em] text-neutral-400 font-semibold">MARKETING</span>
+                  </span>
+                </div>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed max-w-sm">
+                  Tadbirkorlar va ekspertlarning ichki salohiyatini strategiyaga aylantirib, ularni yuqori daromad keltiradigan brendga aylantiramiz.
+                </p>
+              </div>
+
+              <div className="text-xs text-neutral-500 font-mono">
+                &copy; {new Date().getFullYear()} Tesseract Marketing. All rights reserved.
+              </div>
             </div>
-            <span className="font-display font-bold tracking-tight text-white">VENS.EDGE</span>
-          </div>
-          
-          <div className="flex gap-8 text-sm text-neutral-500">
-            <a href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-orange-400 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-orange-400 transition-colors">Contact Support</a>
+
+            {/* Links Columns */}
+            <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-8">
+              {/* Column 1: Services */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">Xizmatlar</h4>
+                <ul className="space-y-2.5 text-sm">
+                  <li>
+                    <a href="#solutions" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
+                      <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      Performance Marketing
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#solutions" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
+                      <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      SMM
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#solutions" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
+                      <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      Content Marketing
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#solutions" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
+                      <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      Branding
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#solutions" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
+                      <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      Video Production
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Column 2: Company */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">Kompaniya</h4>
+                <ul className="space-y-2.5 text-sm">
+                  <li>
+                    <a href="#about" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
+                      <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      Biz haqimizda
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#partners" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
+                      <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      Hamkorlarimiz
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#why-us" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
+                      <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      Nima uchun biz?
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#contact" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
+                      <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      Bog'lanish
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Column 3: Metrics */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">Natijalarimiz</h4>
+                <ul className="space-y-2.5 text-sm">
+                  <li className="text-neutral-400 flex items-center gap-2">
+                    <span className="text-orange-400 font-bold text-xs">180%</span> Mijoz oqimi
+                  </li>
+                  <li className="text-neutral-400 flex items-center gap-2">
+                    <span className="text-orange-400 font-bold text-xs">TOP 10%</span> Video production
+                  </li>
+                  <li className="text-neutral-400 flex items-center gap-2">
+                    <span className="text-orange-400 font-bold text-xs">8x</span> Kafolatlangan natija
+                  </li>
+                  <li className="text-neutral-400 flex items-center gap-2">
+                    <span className="text-orange-400 font-bold text-xs">1M+</span> Qamrov darajasi
+                  </li>
+                  <li className="text-neutral-400 flex items-center gap-2">
+                    <span className="text-orange-400 font-bold text-xs">$500k+</span> Sotuvlar hajmi
+                  </li>
+                </ul>
+              </div>
+
+              {/* Column 4: Socials */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">Ijtimoiy Tarmoqlar</h4>
+                <ul className="space-y-2.5 text-sm">
+                  <li>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2">
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                      </svg>
+                      Instagram
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2">
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.61l-1.91 9c-.14.65-.53.81-1.08.5l-2.91-2.15-1.4 1.35c-.15.15-.28.28-.58.28l.2-2.94 5.35-4.83c.23-.21-.05-.32-.36-.12L9.94 13.3 7.1 12.41c-.62-.19-.63-.62.13-.92l11.07-4.27c.51-.19.96.11.8.81z" />
+                      </svg>
+                      Telegram
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2">
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.002 3.002 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                      </svg>
+                      YouTube
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2">
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                      </svg>
+                      LinkedIn
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <span className="text-xs text-neutral-600 font-mono">
-            &copy; 2026 Vens Edge, Inc. All rights reserved.
-          </span>
+          {/* Bottom Row */}
+          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-neutral-300 transition-colors">Maxfiylik siyosati</a>
+              <a href="#" className="hover:text-neutral-300 transition-colors">Foydalanish shartlari</a>
+            </div>
+            <div className="font-mono">
+              Designed with &hearts; for Tesseract.
+            </div>
+          </div>
         </div>
       </footer>
     </div>

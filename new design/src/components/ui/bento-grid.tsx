@@ -66,24 +66,24 @@ const BentoCard = ({
 
     <div
       className={cn(
-        "pointer-events-none absolute z-20 flex transform-gpu flex-row items-center p-5 lg:p-6 opacity-0 transition-all duration-500",
+        "pointer-events-none absolute z-20 flex transform-gpu flex-row items-center transition-all duration-500",
+        "top-2 right-4 md:top-auto md:right-auto",
         isSmall 
-          ? "top-0 right-0 group-hover:opacity-100" 
-          : "bottom-0 left-0 translate-y-2 group-hover:translate-y-0 group-hover:opacity-100"
+          ? "md:top-0 md:right-0 md:opacity-0 md:group-hover:opacity-100 p-5 lg:p-6" 
+          : "md:bottom-0 md:left-0 md:translate-y-2 md:opacity-0 md:group-hover:opacity-100 md:group-hover:translate-y-0 p-5 lg:p-6"
       )}
     >
       <Button 
         variant="ghost" 
         size="sm" 
         className={cn(
-          "pointer-events-none text-orange-400 backdrop-blur-md rounded-full h-8 text-xs border border-white/10 shadow-lg",
-          isSmall
-            ? "bg-[#05020a]/90 px-4"
-            : "bg-[#05020a]/90 px-6"
+          "pointer-events-none rounded-full h-7 text-[10px] border-0 shadow-none bg-transparent text-neutral-400/80 transition-all duration-300 pr-0",
+          "md:border md:border-white/10 md:bg-[#05020a]/90 md:h-8 md:px-5 md:text-xs md:text-orange-400 md:shadow-md md:backdrop-blur-sm"
         )}
       >
-        {cta}
-        <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+        <span className="md:hidden">Batafsil o'qish</span>
+        <span className="hidden md:inline">{cta}</span>
+        <ArrowRight className="ml-1 h-3 w-3 md:ml-1.5 md:h-3.5 md:w-3.5" />
       </Button>
     </div>
     <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-500 group-hover:bg-gradient-to-t group-hover:from-[#05020a] group-hover:to-transparent opacity-80" />
