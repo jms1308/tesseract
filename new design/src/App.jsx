@@ -894,10 +894,12 @@ function App() {
       </section>
 
       {/* Partners Section */}
-      <section className="relative border-t border-white/5 bg-[#05020a] py-16 lg:py-20 z-10 overflow-hidden" id="partners">
+      <section className="relative bg-[#05020a] py-16 lg:py-20 z-10 overflow-hidden" id="partners">
+        {/* Top border with gradient to fade out on the edges */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] md:w-[50%] h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none" />
         {/* Ambient glow matching the theme on the right */}
-        <div className="absolute -right-[150px] top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[80px] pointer-events-none z-0 mix-blend-screen" />
-        <div className="absolute -right-[80px] top-[20%] w-[250px] h-[250px] bg-amber-500/5 rounded-full blur-[60px] pointer-events-none z-0" />
+        <div className="hidden md:block absolute -right-[150px] top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[80px] pointer-events-none z-0 mix-blend-screen" />
+        <div className="hidden md:block absolute -right-[80px] top-[20%] w-[250px] h-[250px] bg-amber-500/5 rounded-full blur-[60px] pointer-events-none z-0" />
         
         {/* Dotted grid pattern */}
         <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0 opacity-55" />
@@ -930,8 +932,8 @@ function App() {
             {/* Mobile Infinite Scrolling Tickers (Three rows) */}
             <div className="md:hidden flex flex-col gap-3 overflow-hidden relative w-[calc(100%+3rem)] -mx-6 py-2">
               {/* Fade masks for edges */}
-              <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-[#05020a] to-transparent z-20 pointer-events-none" />
-              <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-[#05020a] to-transparent z-20 pointer-events-none" />
+              <div className="absolute top-0 bottom-0 left-0 w-28 bg-gradient-to-r from-[#05020a] to-transparent z-20 pointer-events-none" />
+              <div className="absolute top-0 bottom-0 right-0 w-28 bg-gradient-to-l from-[#05020a] to-transparent z-20 pointer-events-none" />
 
               {/* Row 1 */}
               <div className="flex overflow-hidden w-full">
