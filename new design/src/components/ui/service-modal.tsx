@@ -10,7 +10,7 @@ const SERVICE_DETAILS: Record<string, {
   note: string;
 }> = {
   "Branding": {
-    description: "Brendingizning tashqi ko'rinishi, ovozi va pozitsiyasini shakllantirish jarayoni. Logo, ranglar, uslub, ohang va kommunikatsiya orqali bozorda sizni boshqalardan ajratib turadigan yagona obraz yaratiladi. Kuchli branding — bu ishonch, tanilish va uzoq muddatli mijozlar bazasi.",
+    description: "Yodda qoladigan brend\n\nLogotip, ranglar va uslub — bularning barchasi sizni raqobatchilardan ajratib turadigan yagona obraz yaratadi. Kuchli brend — bu mijozning \"aha, bu ular-ku\" deb tanib olishi.",
     whyNeed: [
       "Brendingiz professional ko'rinadi",
       "Raqobatchilardan ajralib turasiz",
@@ -38,7 +38,7 @@ const SERVICE_DETAILS: Record<string, {
     note: "Agar bozorda ko'rinmayotgan bo'lsangiz, branding aynan siz uchun."
   },
   "Video Production": {
-    description: "Biznesingiz uchun professional video kontent yaratish jarayoni. Reels, reklama roliklari, imij videolar va taqdimotlar orqali auditoriyaga tez, tushunarli va ta'sirli tarzda yetib borish imkonini beradi. Video — bugungi marketingning eng kuchli quroli.",
+    description: "Tomoshabinlarni 3 soniyada to'xtatamiz.\n\nOdamlar skroll qilishni to'xtatishi uchun bor-yo'g'i uch soniya bor. Biz aynan shu uch soniyada diqqatni tortadigan, keyin esa oxirigacha tomosha qildiradigan videolar yaratamiz.",
     whyNeed: [
       "Auditoriya diqqatini tez jalb qiladi",
       "Kontent ko'proq ko'riladi va ijtimoiy tarmoqlarda ulashiladi",
@@ -66,7 +66,7 @@ const SERVICE_DETAILS: Record<string, {
     note: "Agar kontentingiz ko'rilmayotgan bo'lsa — muammo videoda. Biz buni mukammal hal qilamiz."
   },
   "Social Media Marketing": {
-    description: "Brendingizni ijtimoiy tarmoqlarda shakllantirish va rivojlantirish jarayoni. To'g'ri kontent, dizayn va strategiyalar orqali auditoriya jalb qilinadi.",
+    description: "SMM bilan, Onlaynda ko'rinasiz, offlaynda sotasiz\n\nIjtimoiy tarmoqlarda chiroyli post yetarli emas — u odamni to'xtatishi, qiziqtirishi va harakatga undashi kerak. Biz kontent, dizayn va strategiyani birlashtirib, sahifangizni haqiqiy mijoz keltiradigan vositaga aylantiramiz.",
     whyNeed: [
       "Brendingiz ijtimoiy tarmoqlarda faol va professional ko'rinadi",
       "Auditoriya bilan to'g'ridan-to'g'ri ishonchli muloqot o'rnatiladi",
@@ -90,7 +90,7 @@ const SERVICE_DETAILS: Record<string, {
     note: "Brendingiz ijtimoiy tarmoqlarda qanchalik tartibli bo'lsa, mijozlarning sizga bo'lgan ishonchi shunchalik yuqori bo'ladi."
   },
   "Content Marketing": {
-    description: "Foydali, dolzarb va vaqti-vaqti bilan chiquvchi kontent orqali auditoriya ishonchi qozoniladi. Quruq reklama o'rniga mijozlarga bilim va qiymat ulashib, brend ekspertligini isbotlash.",
+    description: "Mazmunli va kreativ kontent bilan ishonch qozonamiz\n\nFaqat \"sotib oling\" demaymiz — mijozga foydali va qiziqarli ma'lumot beramiz. Shu orqali odamlar sizga ishonadi va o'zlari xarid qilishga qaror qiladi. Reklama emas, bilim orqali brendingizni tanitamiz.",
     whyNeed: [
       "Mijozlarda brendingizga nisbatan ekspertlik ishonchi uyg'onadi",
       "Sotuv jarayoni osonlashadi (mijozlar o'zi tushunib sotib olishadi)",
@@ -103,7 +103,7 @@ const SERVICE_DETAILS: Record<string, {
       { title: "Infografika va qo'llanmalar", desc: "Murakkab ma'lumotlarni o'quvchiga sodda va vizual tarzda tushuntirib beramiz." },
       { title: "Haftalik axborotnomalar (Newsletters)", desc: "Mijozlarga Telegram yoki Email orqali muntazam foydali va ekspertlik materiallarini yuboramiz." }
     ],
-    platforms: ["Telegram", "Instagram", "Website Blog", "LinkedIn", "Medium"],
+    platforms: ["Telegram", "Instagram", "Website Blog", "LinkedIn", "X (Twitter)"],
     whyUs: [
       "Biz quruq maqtov bilan emas, mijozning muammosini hal qilish orqali sotamiz",
       "Sizning brendingiz bozorda o'z sohasining eng ishonchli ekspertiga aylanadi",
@@ -112,7 +112,7 @@ const SERVICE_DETAILS: Record<string, {
     note: "Mijozga birinchi bo'lib qiymat bering, keyin u sizdan shubhasiz sotib oladi."
   },
   "Performance marketing": {
-    description: "Natijaga yo'naltirilgan raqamli reklama. Har bir harakat (klik, ariza, sotuv) aniq o'lchanadi va tahlil qilinadi. Reklamaga sarflangan har bir dollarning qaytimini (ROI) maksimal qilish.",
+    description: "Reklama emas — natija sotamiz\n\nBiz reklamaga pul sarflab, \"umid qilib\" kutmaymiz. Har bir mijoz qayerdan kelganini, nima uchun xarid qilganini yoki qilmaganini tahlil qilamiz. Natijada — kam xarajat bilan ko'proq mijoz, va siz aniq bilasiz: bu reklama sizga daromad olib keladi.",
     whyNeed: [
       "Reklama byudjeti mutlaqo havoga uchmaydi, har bir tiyin natija beradi",
       "Savdo bo'limi har kuni issiq arizalar (leadlar) bilan ta'minlanadi",
@@ -120,12 +120,12 @@ const SERVICE_DETAILS: Record<string, {
       "Savdo va arizalar sonini istalgancha masshtablashtirish (scale) mumkin"
     ],
     whatWeDo: [
-      { title: "Target reklamalarni sozlash", desc: "Meta Ads (Instagram, Facebook) va TikTok Ads platformalarida target sozlaymiz." },
+      { title: "Target reklamalarni sozlash", desc: "Meta Ads (Instagram, Facebook) va Telegram Ads platformalarida target sozlaymiz." },
       { title: "Kontekstli reklama (Google Ads)", desc: "Qidiruv tizimlarida sizning xizmatingizni izlayotgan mijozlarga reklamani ko'rsatamiz." },
       { title: "Retargeting (Qayta jalb etish)", desc: "Avval qiziqqan yoki saytingizga kirib hech narsa sotib olmaganlarni qayta jalb etamiz." },
       { title: "CRM va Analitika integratsiyasi", desc: "Google Analytics va CRM orqali arizalar va real sotuvlar hisobotini yuritamiz." }
     ],
-    platforms: ["Meta Ads (Instagram / Facebook)", "Google Ads", "TikTok Ads", "Yandex Direct"],
+    platforms: ["Meta Ads (Instagram / Facebook)", "Google Ads", "Telegram Ads"],
     whyUs: [
       "Biz chiroyli ko'rsatkichlar yoki layklar uchun emas, balki real arizalar va savdo uchun ishlaymiz",
       "Siz reklama xarajatlarining biznesingizga qancha daromad keltirayotganini aniq bilasiz",
@@ -178,7 +178,7 @@ export const ServiceModal = ({
           <h1 className="font-display font-black text-4xl sm:text-5xl text-white tracking-tight bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent w-fit">
             {serviceName}
           </h1>
-          <p className="text-neutral-300 text-base md:text-lg leading-relaxed font-light">
+          <p className="text-neutral-300 text-base md:text-lg leading-relaxed font-light whitespace-pre-line">
             {details.description}
           </p>
         </div>

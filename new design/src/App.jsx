@@ -78,6 +78,72 @@ const ScrollReveal = ({ children, className = "", delay = 0, yOffset = 30, xOffs
   );
 };
 
+const CountUp = ({ end, duration = 1500, prefix = "", suffix = "", separator = "," }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    let active = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && active) {
+          let startTime = null;
+          const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const easedProgress = progress * (2 - progress); // Ease out
+            const val = Math.floor(easedProgress * end);
+            setCount(val);
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+          };
+          requestAnimationFrame(animate);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      active = false;
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [end, duration]);
+
+  const formatNumber = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+  };
+
+  return <span ref={ref}>{prefix}{formatNumber(count)}{suffix}</span>;
+};
+
+const LiveCounter = ({ start = 500000 }) => {
+  const [count, setCount] = useState(start);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const increment = Math.floor(Math.random() * 16) + 10; // $10 to $25
+      setCount((prev) => prev + increment);
+    }, 2500); // every 2.5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatNumber = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  return <span>{formatNumber(count)}</span>;
+};
+
+
 const partners = [
   {
     name: "Air Samarkand",
@@ -645,7 +711,6 @@ const MissionCard = () => {
       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-16 relative z-10">
         {/* Left Column: Heading */}
         <div className="space-y-3 lg:w-1/3">
-          <span className="text-[10px] font-mono text-orange-400 tracking-[0.25em] uppercase block">Missiya / Bosh maqsad</span>
           <h2 className="font-display font-black text-3xl sm:text-4xl text-white leading-tight">
             Tesseract agentligida biz :
           </h2>
@@ -814,8 +879,8 @@ function App() {
             {/* Main Headline */}
             <h1 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-[66px] tracking-tight leading-[1.15] mb-6 text-white flex flex-wrap items-center gap-x-3 gap-y-1">
               <span>Biznesingizni</span> <br />
-              <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">raqamli</span>
-              <span>olamda</span>
+              <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">tizimli</span>
+              <span>marketing bilan</span>
               <TextSlider text="o'stiramiz" className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent font-display font-extrabold text-5xl sm:text-6xl lg:text-[66px]" />
             </h1>
 
@@ -1131,7 +1196,7 @@ function App() {
                   </p>
                 </div>
                 <div className="flex items-end justify-between w-full">
-                  <span className="text-4xl sm:text-5xl font-display font-black text-white group-hover:text-orange-400 transition-colors duration-500">8x</span>
+                  <span className="text-4xl sm:text-5xl font-display font-black text-white group-hover:text-orange-400 transition-colors duration-500"><CountUp end={8} suffix="x" /></span>
                   {/* Led Indicator */}
                   <div className="flex gap-1 mb-2">
                     {[...Array(8)].map((_, i) => (
@@ -1180,8 +1245,11 @@ function App() {
                   </p>
                 </div>
                 <div className="flex flex-col items-center md:items-end justify-center bg-white/[0.02] border border-white/5 px-4 py-4 sm:px-8 sm:py-6 rounded-2xl backdrop-blur-sm w-full md:w-auto group-hover:border-orange-500/30 group-hover:bg-[#05020a]/80 group-hover:shadow-[0_0_25px_rgba(249,115,22,0.1)] transition-all duration-500">
-                  <span className="text-3xl sm:text-5xl font-display font-black text-white group-hover:scale-105 transition-transform duration-500">$500,000+</span>
-                  <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider mt-1.5">▲ Live Tracked Metric</span>
+                  <span className="text-3xl sm:text-5xl font-display font-black text-white group-hover:scale-105 transition-transform duration-500">$<LiveCounter />+</span>
+                  <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider mt-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Live Tracked Metric
+                  </span>
                 </div>
               </div>
             </ScrollReveal>
@@ -1234,19 +1302,27 @@ function App() {
                 </p>
               </div>
 
-              {/* Competitor warning box */}
-              <div className="bg-red-500/5 border border-red-500/10 rounded-2xl p-6 relative overflow-hidden max-w-md mx-auto md:mx-0 text-left">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full blur-2xl pointer-events-none" />
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 flex-shrink-0 animate-pulse">
-                    <AlertTriangle className="w-5 h-5" />
+              {/* Modern High-Impact Competitor Warning Card */}
+              <div className="relative overflow-hidden rounded-3xl border border-red-500/20 bg-gradient-to-br from-red-950/20 via-red-900/10 to-transparent p-8 md:p-10 shadow-[0_0_50px_rgba(239,68,68,0.05)] group/warn w-full max-w-lg">
+                <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-red-500/10 rounded-full blur-3xl pointer-events-none group-hover/warn:bg-red-500/15 transition-colors duration-500" />
+                <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-red-500 animate-ping" />
+                
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-3 w-3 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </span>
+                    <span className="text-xs font-mono text-red-400 font-bold uppercase tracking-[0.25em]">Raqobat ogohlantirishi</span>
                   </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-red-500 uppercase tracking-widest block mb-1">Raqobat ogohlantirishi</span>
-                    <p className="text-neutral-300 text-sm leading-relaxed font-light">
-                      Siz tayyor bo'lmasangiz — <span className="text-red-400 font-semibold">raqobatchilaringiz</span> boshlashga allaqachon tayyor 😉
-                    </p>
-                  </div>
+                  
+                  <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-white leading-tight tracking-tight">
+                    Siz tayyor bo'lmasangiz — <span className="bg-gradient-to-r from-red-400 via-rose-500 to-rose-400 bg-clip-text text-transparent font-black">raqobatchilaringiz</span> boshlashga allaqachon tayyor 😉
+                  </h3>
+                  
+                  <p className="text-neutral-400 text-sm sm:text-base leading-relaxed font-light">
+                    Biznes olamida vaqt — eng qimmatli resurs. Har bir kechiktirilgan kun raqiblaringizga oldinga o'tib olish uchun yangi imkoniyat beradi.
+                  </p>
                 </div>
               </div>
             </ScrollReveal>

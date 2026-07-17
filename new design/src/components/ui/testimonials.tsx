@@ -116,12 +116,6 @@ export const Testimonials = () => {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center max-w-[640px] mx-auto text-center mb-12"
         >
-          <div className="flex justify-center">
-            <span className="text-xs font-bold uppercase tracking-wider text-orange-400 font-mono mb-3 block border border-orange-500/30 py-1 px-4 rounded-full bg-orange-500/5">
-              Ishonch
-            </span>
-          </div>
-
           <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mt-2">
             Bizga ishonch bildirgan Loyihalar
           </h2>
