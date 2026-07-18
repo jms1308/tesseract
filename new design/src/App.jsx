@@ -148,175 +148,79 @@ const LiveCounter = ({ start = 500000 }) => {
 const partners = [
   {
     name: "Air Samarkand",
-    logo: (
-      <div className="flex items-center gap-1.5">
-        <svg className="w-5 h-5 text-sky-400 fill-sky-400/20" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path d="M12 2L15 9H22L17 14L19 21L12 17L5 21L7 14L2 9H9L12 2Z" />
-        </svg>
-        <span className="font-display font-bold text-sm tracking-wide text-white">Air Samarkand</span>
-      </div>
-    )
+    logo: <img src="/hamkorlar/AIR SAMARQAND.png" alt="Air Samarkand" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "albem",
-    logo: (
-      <div className="flex items-center gap-1">
-        <span className="font-sans font-extrabold text-2xl tracking-tighter text-white">al<span className="text-orange-500">bem</span></span>
-      </div>
-    )
+    logo: <img src="/hamkorlar/albem.png" alt="albem" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "Blizz Art",
-    logo: (
-      <div className="flex flex-col items-center">
-        <svg className="w-5 h-5 text-amber-400 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 2L2 7L12 12L22 7L12 2Z" />
-          <path d="M2 17L12 22L22 17" />
-          <path d="M2 12L12 17L22 12" />
-        </svg>
-        <span className="font-serif font-semibold text-xs tracking-widest text-amber-300 uppercase">Blizz Art</span>
-      </div>
-    )
+    logo: <img src="/hamkorlar/ART.png" alt="Blizz Art" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
   },
   {
     name: "MEDION",
-    logo: (
-      <div className="flex items-center gap-2">
-        <svg className="w-5 h-5 text-red-500 fill-red-500/10" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        </svg>
-        <span className="font-display font-extrabold text-sm tracking-widest text-white">MEDION</span>
-      </div>
-    )
+    logo: <img src="/hamkorlar/MEDION.png" alt="MEDION" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "BOLAJON",
-    logo: (
-      <div className="flex gap-0.5 font-display font-black text-lg">
-        <span className="text-red-500">B</span>
-        <span className="text-yellow-500">O</span>
-        <span className="text-green-500">L</span>
-        <span className="text-blue-500">A</span>
-        <span className="text-purple-500">J</span>
-        <span className="text-orange-500">O</span>
-        <span className="text-pink-500">N</span>
-      </div>
-    )
+    logo: <img src="/hamkorlar/BOLOJON.png" alt="BOLAJON" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "PROMAX EDUCATION",
-    logo: (
-      <div className="flex flex-col items-center gap-0.5">
-        <svg className="w-5 h-5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-          <path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5" />
-        </svg>
-        <span className="font-sans font-black text-[10px] tracking-widest text-white uppercase text-center">PROMAX <span className="text-blue-400 font-normal">EDUCATION</span></span>
-      </div>
-    )
+    logo: <img src="/hamkorlar/PROMAX.png" alt="PROMAX EDUCATION" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+  },
+  {
+    name: "PROMAX EDUCATION 2",
+    logo: <img src="/hamkorlar/PROMAX 2.png" alt="PROMAX EDUCATION 2" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "Sevimli",
-    logo: (
-      <div className="flex items-center gap-2">
-        <div className="relative w-5 h-5 flex items-center justify-center">
-          <div className="absolute inset-0 border-2 border-dashed border-red-500 rounded-full animate-spin [animation-duration:10s]" />
-          <div className="w-2.5 h-2.5 bg-orange-500 rounded-full" />
-        </div>
-        <span className="font-sans font-bold text-sm tracking-tight text-white">Sevimli</span>
-      </div>
-    )
-  },
-  {
-    name: "VEN'S ACADEMY",
-    logo: (
-      <div className="flex items-center gap-2">
-        <svg className="w-6 h-6 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="M5 3L12 19L19 3" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="font-display font-extrabold text-xs tracking-widest text-white">VEN'S <span className="text-orange-400 font-normal">ACADEMY</span></span>
-      </div>
-    )
-  },
-  {
-    name: "UZBEKISTAN AIRWAYS",
-    logo: (
-      <div className="flex items-center gap-2">
-        <svg className="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M2 22L12 2l10 20H2z" strokeLinejoin="round" />
-          <path d="M12 2v20" />
-        </svg>
-        <span className="font-sans font-bold text-[10px] tracking-wider text-cyan-200 uppercase">UZBEKISTAN <span className="text-neutral-400 font-normal">AIRWAYS</span></span>
-      </div>
-    )
-  },
-  {
-    name: "COLIZEUM",
-    logo: (
-      <div className="flex items-center gap-1.5">
-        <div className="w-5 h-5 rounded-full border-2 border-yellow-500 flex items-center justify-center">
-          <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full" />
-        </div>
-        <span className="font-mono font-black text-xs tracking-widest text-yellow-400 uppercase">COLIZEUM</span>
-      </div>
-    )
-  },
-  {
-    name: "MY SCHOOL",
-    logo: (
-      <div className="flex items-center gap-1.5">
-        <span className="font-sans font-black text-sm text-red-500">MY <span className="text-blue-500 font-light">SCHOOL</span></span>
-      </div>
-    )
-  },
-  {
-    name: "REMONT.UZ",
-    logo: (
-      <div className="flex items-center gap-1.5">
-        <svg className="w-4 h-4 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-        </svg>
-        <span className="font-display font-black text-xs tracking-widest text-white">REMONT<span className="text-orange-500">.UZ</span></span>
-      </div>
-    )
-  },
-  {
-    name: "TDIU",
-    logo: (
-      <div className="flex items-center gap-2">
-        <svg className="w-5 h-5 text-sky-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          <path d="M12 6v10" />
-          <path d="M8 10h8" />
-        </svg>
-        <span className="font-serif font-bold text-[9px] leading-tight text-neutral-300 text-center max-w-[90px] uppercase">TDIU</span>
-      </div>
-    )
-  },
-  {
-    name: "TVR",
-    logo: (
-      <div className="flex items-center gap-2">
-        <div className="w-5 h-5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center">
-          <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M23 7l-7 5 7 5V7z" />
-            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-          </svg>
-        </div>
-        <span className="font-display font-extrabold text-sm tracking-wider text-white">TVR</span>
-      </div>
-    )
+    logo: <img src="/hamkorlar/SEVIMLI 2.png" alt="Sevimli" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
   },
   {
     name: "Sevimli Play",
-    logo: (
-      <div className="flex items-center gap-1.5">
-        <svg className="w-5 h-5 text-orange-500 fill-orange-500/20" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <polygon points="5 3 19 12 5 21 5 3" />
-        </svg>
-        <span className="font-sans font-black text-xs text-white">Sevimli<span className="text-orange-500 italic font-medium ml-0.5">PLAY</span></span>
-      </div>
-    )
+    logo: <img src="/hamkorlar/SEVV.png" alt="Sevimli Play" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
+  },
+  {
+    name: "VEN'S ACADEMY",
+    logo: <img src="/hamkorlar/VENS.png" alt="VEN'S ACADEMY" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+  },
+  {
+    name: "UZBEKISTAN AIRWAYS",
+    logo: <img src="/hamkorlar/AIRWAYS.png" alt="UZBEKISTAN AIRWAYS" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+  },
+  {
+    name: "COLIZEUM",
+    logo: <img src="/hamkorlar/COLIZEUM.png" alt="COLIZEUM" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+  },
+  {
+    name: "COLIZEUM 2",
+    logo: <img src="/hamkorlar/COLIZEUM 2.png" alt="COLIZEUM 2" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+  },
+  {
+    name: "MY SCHOOL",
+    logo: <img src="/hamkorlar/MYSCHOOL.png" alt="MY SCHOOL" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+  },
+  {
+    name: "REMONT.UZ",
+    logo: <img src="/hamkorlar/REMONT UZ.png" alt="REMONT.UZ" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+  },
+  {
+    name: "TDIU",
+    logo: <img src="/hamkorlar/TDIU.png" alt="TDIU" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+  },
+  {
+    name: "TVR",
+    logo: <img src="/hamkorlar/TVR.png" alt="TVR" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
+  },
+  {
+    name: "Sevimli TV",
+    logo: <img src="/hamkorlar/IMG_2930.PNG" alt="Sevimli TV" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
+  },
+  {
+    name: "Barq",
+    logo: <img src="/hamkorlar/barq_logo.jpg" alt="Barq" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 grayscale brightness-[5] contrast-[1000%] rounded" />
   }
 ];
 
@@ -1111,7 +1015,7 @@ function App() {
                   className="group relative flex flex-col items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.01] backdrop-blur-md transition-all duration-500 hover:border-orange-500/30 hover:bg-orange-500/5 hover:scale-[1.03] hover:shadow-2xl hover:shadow-orange-500/5 min-h-[110px]"
                 >
                   <div className="absolute inset-0 pointer-events-none rounded-2xl bg-gradient-to-t from-orange-500/0 via-orange-500/0 to-orange-500/[0.02] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="relative z-10 flex items-center justify-center opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 filter grayscale group-hover:grayscale-0">
+                  <div className="relative z-10 flex items-center justify-center opacity-85 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
                     {partner.logo}
                   </div>
                 </div>
@@ -1127,7 +1031,7 @@ function App() {
               {/* Row 1 */}
               <div className="flex overflow-hidden w-full">
                 <div className="animate-marquee flex gap-2 pr-2">
-                  {[...partners.slice(0, 5), ...partners.slice(0, 5), ...partners.slice(0, 5)].map((partner, idx) => (
+                  {[...partners.slice(0, 7), ...partners.slice(0, 7), ...partners.slice(0, 7)].map((partner, idx) => (
                     <div 
                       key={`${partner.name}-r1-${idx}`}
                       className="flex items-center justify-center px-3 py-2 rounded-xl border border-white/5 bg-white/[0.01] backdrop-blur-sm min-w-[110px] h-[55px]"
@@ -1143,7 +1047,7 @@ function App() {
               {/* Row 2 */}
               <div className="flex overflow-hidden w-full">
                 <div className="animate-marquee-fast flex gap-2 pr-2">
-                  {[...partners.slice(5, 10), ...partners.slice(5, 10), ...partners.slice(5, 10)].map((partner, idx) => (
+                  {[...partners.slice(7, 13), ...partners.slice(7, 13), ...partners.slice(7, 13)].map((partner, idx) => (
                     <div 
                       key={`${partner.name}-r2-${idx}`}
                       className="flex items-center justify-center px-3 py-2 rounded-xl border border-white/5 bg-white/[0.01] backdrop-blur-sm min-w-[110px] h-[55px]"
@@ -1159,7 +1063,7 @@ function App() {
               {/* Row 3 */}
               <div className="flex overflow-hidden w-full">
                 <div className="animate-marquee-slow flex gap-2 pr-2">
-                  {[...partners.slice(10, 15), ...partners.slice(10, 15), ...partners.slice(10, 15)].map((partner, idx) => (
+                  {[...partners.slice(13, 19), ...partners.slice(13, 19), ...partners.slice(13, 19)].map((partner, idx) => (
                     <div 
                       key={`${partner.name}-r3-${idx}`}
                       className="flex items-center justify-center px-3 py-2 rounded-xl border border-white/5 bg-white/[0.01] backdrop-blur-sm min-w-[110px] h-[55px]"
