@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Activity, 
-  Cpu, 
-  Database, 
-  Globe2, 
-  Lock, 
-  Radio, 
-  Server, 
-  Shield, 
-  Terminal, 
-  Zap, 
+import {
+  Activity,
+  Cpu,
+  Database,
+  Globe2,
+  Lock,
+  Radio,
+  Server,
+  Shield,
+  Terminal,
+  Zap,
   ArrowRight,
   ChevronRight,
   Menu,
@@ -148,79 +148,75 @@ const LiveCounter = ({ start = 500000 }) => {
 const partners = [
   {
     name: "Air Samarkand",
-    logo: <img src="/hamkorlar/AIR SAMARQAND.png" alt="Air Samarkand" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/AIR SAMARQAND.png" alt="Air Samarkand" className="h-11 max-h-11 w-auto max-w-[140px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "albem",
-    logo: <img src="/hamkorlar/albem.png" alt="albem" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/albem.png" alt="albem" className="h-10 max-h-10 w-auto max-w-[140px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "Blizz Art",
-    logo: <img src="/hamkorlar/ART.png" alt="Blizz Art" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
+    logo: <img src="/hamkorlar/ART.png" alt="Blizz Art" className="h-16 max-h-16 w-auto max-w-[150px] object-contain transition-all duration-300" />
   },
   {
     name: "MEDION",
-    logo: <img src="/hamkorlar/MEDION.png" alt="MEDION" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/MEDION.png" alt="MEDION" className="h-11 max-h-11 w-auto max-w-[140px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "BOLAJON",
-    logo: <img src="/hamkorlar/BOLOJON.png" alt="BOLAJON" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/BOLOJON.png" alt="BOLAJON" className="h-14 max-h-14 w-auto max-w-[150px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "PROMAX EDUCATION",
-    logo: <img src="/hamkorlar/PROMAX.png" alt="PROMAX EDUCATION" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
-  },
-  {
-    name: "PROMAX EDUCATION 2",
-    logo: <img src="/hamkorlar/PROMAX 2.png" alt="PROMAX EDUCATION 2" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/PROMAX.png" alt="PROMAX EDUCATION" className="h-13 max-h-13 w-auto max-w-[145px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "Sevimli",
-    logo: <img src="/hamkorlar/SEVIMLI 2.png" alt="Sevimli" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
+    logo: <img src="/hamkorlar/SEVIMLI 2.png" alt="Sevimli" className="h-14 max-h-14 w-auto max-w-[150px] object-contain transition-all duration-300" />
   },
   {
     name: "Sevimli Play",
-    logo: <img src="/hamkorlar/SEVV.png" alt="Sevimli Play" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
+    logo: <img src="/hamkorlar/SEVV.png" alt="Sevimli Play" className="h-14 max-h-14 w-auto max-w-[150px] object-contain transition-all duration-300" />
   },
   {
     name: "VEN'S ACADEMY",
-    logo: <img src="/hamkorlar/VENS.png" alt="VEN'S ACADEMY" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/VENS.png" alt="VEN'S ACADEMY" className="h-11 max-h-11 w-auto max-w-[140px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "UZBEKISTAN AIRWAYS",
-    logo: <img src="/hamkorlar/AIRWAYS.png" alt="UZBEKISTAN AIRWAYS" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/AIRWAYS.png" alt="UZBEKISTAN AIRWAYS" className="h-11 max-h-11 w-auto max-w-[140px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "COLIZEUM",
-    logo: <img src="/hamkorlar/COLIZEUM.png" alt="COLIZEUM" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/COLIZEUM.png" alt="COLIZEUM" className="h-14 max-h-14 w-auto max-w-[150px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "COLIZEUM 2",
-    logo: <img src="/hamkorlar/COLIZEUM 2.png" alt="COLIZEUM 2" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/COLIZEUM 2.png" alt="COLIZEUM 2" className="h-14 max-h-14 w-auto max-w-[150px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "MY SCHOOL",
-    logo: <img src="/hamkorlar/MYSCHOOL.png" alt="MY SCHOOL" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/MYSCHOOL.png" alt="MY SCHOOL" className="h-14 max-h-14 w-auto max-w-[150px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "REMONT.UZ",
-    logo: <img src="/hamkorlar/REMONT UZ.png" alt="REMONT.UZ" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/REMONT UZ.png" alt="REMONT.UZ" className="h-11 max-h-11 w-auto max-w-[140px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "TDIU",
-    logo: <img src="/hamkorlar/TDIU.png" alt="TDIU" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 brightness-0 invert" />
+    logo: <img src="/hamkorlar/TDIU.png" alt="TDIU" className="h-13 max-h-13 w-auto max-w-[145px] object-contain transition-all duration-300 brightness-0 invert" />
   },
   {
     name: "TVR",
-    logo: <img src="/hamkorlar/TVR.png" alt="TVR" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
+    logo: <img src="/hamkorlar/TVR.png" alt="TVR" className="h-16 max-h-16 w-auto max-w-[150px] object-contain transition-all duration-300" />
   },
   {
     name: "Sevimli TV",
-    logo: <img src="/hamkorlar/IMG_2930.PNG" alt="Sevimli TV" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300" />
+    logo: <img src="/hamkorlar/IMG_2930.PNG" alt="Sevimli TV" className="h-16 max-h-16 w-auto max-w-[150px] object-contain transition-all duration-300" />
   },
   {
     name: "Barq",
-    logo: <img src="/hamkorlar/barq_logo.jpg" alt="Barq" className="h-14 max-h-14 w-auto max-w-[160px] object-contain transition-all duration-300 grayscale brightness-[5] contrast-[1000%] rounded" />
+    logo: <img src="/hamkorlar/barq_logo.jpg" alt="Barq" className="h-15 max-h-15 w-auto max-w-[145px] object-contain transition-all duration-300 grayscale brightness-[5] contrast-[1000%] rounded" />
   }
 ];
 
@@ -384,7 +380,7 @@ const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit} className="h-full flex flex-col justify-between bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden shadow-2xl">
       <div className="absolute -right-16 -top-16 w-36 h-36 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
-      
+
       <div className="space-y-6 flex-grow">
         <div className="space-y-1">
           <h3 className="text-lg font-bold text-white">So'rov yuborish</h3>
@@ -434,11 +430,10 @@ const ContactForm = () => {
                   key={service}
                   type="button"
                   onClick={() => handleToggleService(service)}
-                  className={`px-3 py-1.5 rounded-xl text-[11px] font-medium border transition-all duration-300 cursor-pointer ${
-                    isSelected
+                  className={`px-3 py-1.5 rounded-xl text-[11px] font-medium border transition-all duration-300 cursor-pointer ${isSelected
                       ? 'bg-orange-500/10 border-orange-500/50 text-orange-400 shadow-[0_0_15px_rgba(249,115,22,0.1)]'
                       : 'bg-white/[0.02] border-white/5 text-neutral-400 hover:border-white/15 hover:text-neutral-200'
-                  }`}
+                    }`}
                 >
                   {service}
                 </button>
@@ -470,7 +465,7 @@ const ContactForm = () => {
 const MissionCard = () => {
   const cardRef = useRef(null);
   const dims = useRef({ w: 800, h: 250 });
-  
+
   const topPathRef = useRef(null);
   const rightPathRef = useRef(null);
   const bottomPathRef = useRef(null);
@@ -660,65 +655,65 @@ const MissionCard = () => {
       className="rounded-3xl p-8 md:p-12 bg-[#0b0813]/40 backdrop-blur-md relative transition-all duration-300 shadow-2xl"
     >
       {/* Interaction Zones for Plucking Bending Border (Expanded on Hover) */}
-      <div 
-        onMouseEnter={manageTopMouseEnter} 
-        onMouseMove={manageTopMouseMove} 
+      <div
+        onMouseEnter={manageTopMouseEnter}
+        onMouseMove={manageTopMouseMove}
         onMouseLeave={manageTopMouseLeave}
         className="absolute -top-3 left-6 right-6 h-6 z-30 cursor-ns-resize hover:-top-16 hover:h-32 transition-all duration-100"
       />
-      <div 
-        onMouseEnter={manageRightMouseEnter} 
-        onMouseMove={manageRightMouseMove} 
+      <div
+        onMouseEnter={manageRightMouseEnter}
+        onMouseMove={manageRightMouseMove}
         onMouseLeave={manageRightMouseLeave}
         className="absolute top-6 bottom-6 -right-3 w-6 z-30 cursor-ew-resize hover:-right-16 hover:w-32 transition-all duration-100"
       />
-      <div 
-        onMouseEnter={manageBottomMouseEnter} 
-        onMouseMove={manageBottomMouseMove} 
+      <div
+        onMouseEnter={manageBottomMouseEnter}
+        onMouseMove={manageBottomMouseMove}
         onMouseLeave={manageBottomMouseLeave}
         className="absolute -bottom-3 left-6 right-6 h-6 z-30 cursor-ns-resize hover:-bottom-16 hover:h-32 transition-all duration-100"
       />
-      <div 
-        onMouseEnter={manageLeftMouseEnter} 
-        onMouseMove={manageLeftMouseMove} 
+      <div
+        onMouseEnter={manageLeftMouseEnter}
+        onMouseMove={manageLeftMouseMove}
         onMouseLeave={manageLeftMouseLeave}
         className="absolute top-6 bottom-6 -left-3 w-6 z-30 cursor-ew-resize hover:-left-16 hover:w-32 transition-all duration-100"
       />
 
       {/* Dynamic Elastic SVG Border */}
-      <svg 
-        className="absolute inset-0 w-full h-full pointer-events-none z-20" 
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none z-20"
         style={{ overflow: 'visible' }}
       >
         {/* Top edge */}
-        <path 
+        <path
           ref={topPathRef}
-          fill="none" 
-          stroke="rgba(255,255,255,0.1)" 
+          fill="none"
+          stroke="rgba(255,255,255,0.1)"
           strokeWidth="1.5"
           className="transition-[stroke] duration-300"
         />
         {/* Right edge */}
-        <path 
+        <path
           ref={rightPathRef}
-          fill="none" 
-          stroke="rgba(255,255,255,0.1)" 
+          fill="none"
+          stroke="rgba(255,255,255,0.1)"
           strokeWidth="1.5"
           className="transition-[stroke] duration-300"
         />
         {/* Bottom edge */}
-        <path 
+        <path
           ref={bottomPathRef}
-          fill="none" 
-          stroke="rgba(255,255,255,0.1)" 
+          fill="none"
+          stroke="rgba(255,255,255,0.1)"
           strokeWidth="1.5"
           className="transition-[stroke] duration-300"
         />
         {/* Left edge */}
-        <path 
+        <path
           ref={leftPathRef}
-          fill="none" 
-          stroke="rgba(255,255,255,0.1)" 
+          fill="none"
+          stroke="rgba(255,255,255,0.1)"
           strokeWidth="1.5"
           className="transition-[stroke] duration-300"
         />
@@ -766,9 +761,9 @@ function App() {
 
   if (view.page === 'service') {
     return (
-      <ServicePage 
-        serviceName={view.service} 
-        onBack={() => setView({ page: 'home', service: null })} 
+      <ServicePage
+        serviceName={view.service}
+        onBack={() => setView({ page: 'home', service: null })}
       />
     );
   }
@@ -812,7 +807,7 @@ function App() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <button 
+            <button
               onClick={() => {
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
@@ -826,7 +821,7 @@ function App() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button 
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 text-neutral-400 hover:text-white z-50 relative"
           >
@@ -835,50 +830,49 @@ function App() {
         </div>
 
         {/* Mobile Navigation Dropdown with smooth animated transition */}
-        <div 
-          className={`md:hidden absolute left-4 right-4 top-20 border border-white/10 bg-[#05020a]/95 backdrop-blur-xl px-6 py-8 flex flex-col gap-5 rounded-3xl transition-all duration-500 ease-out origin-top ${
-            mobileMenuOpen 
-              ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' 
+        <div
+          className={`md:hidden absolute left-4 right-4 top-20 border border-white/10 bg-[#05020a]/95 backdrop-blur-xl px-6 py-8 flex flex-col gap-5 rounded-3xl transition-all duration-500 ease-out origin-top ${mobileMenuOpen
+              ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
               : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'
-          }`}
+            }`}
         >
-          <a 
-            href="#solutions" 
+          <a
+            href="#solutions"
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
           >
             <Text_03 text="Xizmatlar" className="text-lg font-medium" />
           </a>
-          <a 
-            href="#partners" 
+          <a
+            href="#partners"
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
           >
             <Text_03 text="Hamkorlar" className="text-lg font-medium" />
           </a>
-          <a 
-            href="#why-us" 
+          <a
+            href="#why-us"
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
           >
             <Text_03 text="Afzalliklar" className="text-lg font-medium" />
           </a>
-          <a 
-            href="#metrics" 
+          <a
+            href="#metrics"
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
           >
             <Text_03 text="Natijalar" className="text-lg font-medium" />
           </a>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 pb-1"
           >
             <Text_03 text="Bog'lanish" className="text-lg font-medium" />
           </a>
           <hr className="border-white/10 my-1" />
-          <button 
+          <button
             onClick={() => {
               setMobileMenuOpen(false);
               const contactSection = document.getElementById('contact');
@@ -896,7 +890,7 @@ function App() {
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-6 min-h-screen flex items-center justify-center z-10 pt-28 pb-12 md:pt-20 md:pb-0">
         <div className="flex flex-col lg:flex-row items-center gap-4 md:gap-8 w-full">
-          
+
           {/* Left Hero Content */}
           <ScrollReveal className="flex-1 flex flex-col items-start text-left max-w-3xl lg:pl-16 mt-2 md:mt-0" delay={150}>
             {/* Main Headline */}
@@ -934,10 +928,10 @@ function App() {
         {/* Background glow behind cards on the left */}
         <div className="absolute left-[-100px] top-[10%] w-[350px] h-[350px] bg-orange-500/15 rounded-full blur-[80px] pointer-events-none z-0 mix-blend-screen" />
         <div className="absolute left-[-40px] top-[50%] -translate-y-1/2 w-[200px] h-[350px] bg-amber-500/5 rounded-full blur-[60px] pointer-events-none z-0" />
-        
+
         {/* Dotted grid pattern */}
         <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0 opacity-60" />
-        
+
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <ScrollReveal delay={100}>
             <div className="text-center max-w-3xl mx-auto mb-10">
@@ -945,18 +939,18 @@ function App() {
                 Biz sizga qanday{" "}
                 <span className="relative inline-block px-4 py-1.5 mx-1">
                   <span className="relative z-10 text-white">yechimlar</span>
-                  <svg 
-                    className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105" 
-                    viewBox="0 0 100 40" 
+                  <svg
+                    className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105"
+                    viewBox="0 0 100 40"
                     preserveAspectRatio="none"
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2.5" 
-                    strokeLinecap="round" 
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <path 
-                      d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11" 
+                    <path
+                      d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11"
                     />
                   </svg>
                 </span>{" "}
@@ -975,7 +969,7 @@ function App() {
         {/* Glowing backdrop */}
         <div className="absolute left-[10%] top-[30%] w-[350px] h-[350px] bg-orange-500/5 rounded-full blur-[90px] pointer-events-none z-0" />
         <div className="absolute right-[10%] bottom-[20%] w-[250px] h-[250px] bg-purple-500/5 rounded-full blur-[80px] pointer-events-none z-0" />
-        
+
         {/* Dotted grid pattern */}
         <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0 opacity-30" />
 
@@ -993,10 +987,10 @@ function App() {
         {/* Ambient glow matching the theme on the right */}
         <div className="hidden md:block absolute -right-[150px] top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[80px] pointer-events-none z-0 mix-blend-screen" />
         <div className="hidden md:block absolute -right-[80px] top-[20%] w-[250px] h-[250px] bg-amber-500/5 rounded-full blur-[60px] pointer-events-none z-0" />
-        
+
         {/* Dotted grid pattern */}
         <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0 opacity-55" />
-        
+
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <ScrollReveal delay={100}>
             <div className="text-center max-w-3xl mx-auto mb-14">
@@ -1005,14 +999,14 @@ function App() {
               </h2>
             </div>
           </ScrollReveal>
-          
+
           <ScrollReveal delay={200} yOffset={40}>
             {/* Desktop Grid Layout */}
-            <div className="hidden md:grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div className="hidden md:flex flex-wrap justify-center gap-4">
               {partners.map((partner) => (
-                <div 
+                <div
                   key={partner.name}
-                  className="group relative flex flex-col items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.01] backdrop-blur-md transition-all duration-500 hover:border-orange-500/30 hover:bg-orange-500/5 hover:scale-[1.03] hover:shadow-2xl hover:shadow-orange-500/5 min-h-[110px]"
+                  className="group relative flex flex-col items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.01] backdrop-blur-md transition-all duration-500 hover:border-orange-500/30 hover:bg-orange-500/5 hover:scale-[1.03] hover:shadow-2xl hover:shadow-orange-500/5 min-h-[110px] w-full md:w-[calc(25%-12px)] lg:w-[calc(20%-13px)] min-w-[170px]"
                 >
                   <div className="absolute inset-0 pointer-events-none rounded-2xl bg-gradient-to-t from-orange-500/0 via-orange-500/0 to-orange-500/[0.02] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 flex items-center justify-center opacity-85 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
@@ -1032,7 +1026,7 @@ function App() {
               <div className="flex overflow-hidden w-full">
                 <div className="animate-marquee flex gap-2 pr-2">
                   {[...partners.slice(0, 7), ...partners.slice(0, 7), ...partners.slice(0, 7)].map((partner, idx) => (
-                    <div 
+                    <div
                       key={`${partner.name}-r1-${idx}`}
                       className="flex items-center justify-center px-3 py-2 rounded-xl border border-white/5 bg-white/[0.01] backdrop-blur-sm min-w-[110px] h-[55px]"
                     >
@@ -1048,7 +1042,7 @@ function App() {
               <div className="flex overflow-hidden w-full">
                 <div className="animate-marquee-fast flex gap-2 pr-2">
                   {[...partners.slice(7, 13), ...partners.slice(7, 13), ...partners.slice(7, 13)].map((partner, idx) => (
-                    <div 
+                    <div
                       key={`${partner.name}-r2-${idx}`}
                       className="flex items-center justify-center px-3 py-2 rounded-xl border border-white/5 bg-white/[0.01] backdrop-blur-sm min-w-[110px] h-[55px]"
                     >
@@ -1064,7 +1058,7 @@ function App() {
               <div className="flex overflow-hidden w-full">
                 <div className="animate-marquee-slow flex gap-2 pr-2">
                   {[...partners.slice(13, 19), ...partners.slice(13, 19), ...partners.slice(13, 19)].map((partner, idx) => (
-                    <div 
+                    <div
                       key={`${partner.name}-r3-${idx}`}
                       className="flex items-center justify-center px-3 py-2 rounded-xl border border-white/5 bg-white/[0.01] backdrop-blur-sm min-w-[110px] h-[55px]"
                     >
@@ -1084,7 +1078,7 @@ function App() {
       <section className="relative border-t border-white/5 bg-[#05020a]/40 py-20 lg:py-24 z-10 overflow-hidden" id="why-us">
         {/* Background ambient glow */}
         <div className="absolute left-[-150px] top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] pointer-events-none z-0" />
-        
+
         {/* Dotted grid pattern */}
         <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0 opacity-40" />
 
@@ -1107,7 +1101,7 @@ function App() {
             {whyChooseUs.map((item, idx) => {
               const xOffset = idx % 2 === 0 ? -30 : 30;
               return (
-                <ScrollReveal 
+                <ScrollReveal
                   key={item.title}
                   xOffset={xOffset}
                   yOffset={0}
@@ -1164,7 +1158,7 @@ function App() {
       <section className="relative border-t border-white/5 bg-[#05020a] py-20 lg:py-24 z-10 overflow-hidden" id="metrics">
         {/* Background ambient glow */}
         <div className="absolute left-[10%] top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] pointer-events-none z-0" />
-        
+
         {/* Dotted grid pattern */}
         <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0 opacity-40" />
 
@@ -1178,7 +1172,7 @@ function App() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
+
             {/* 1. Client growth 180% */}
             <ScrollReveal className="md:col-span-2 lg:col-span-2 bg-[#0b0813]/60 border border-white/5 rounded-3xl p-6 sm:p-8 relative overflow-hidden group hover:border-orange-500/30 hover:bg-[#0c0816] hover:shadow-[0_0_35px_rgba(249,115,22,0.12)] hover:-translate-y-1.5 transition-all duration-500" delay={150}>
               <div className="absolute top-0 right-0 w-48 h-48 bg-orange-500/5 rounded-full blur-3xl group-hover:bg-orange-500/10 transition-all duration-500 pointer-events-none" />
@@ -1311,47 +1305,47 @@ function App() {
         {/* Background ambient glow */}
         <div className="absolute right-[-150px] bottom-[-150px] w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] pointer-events-none z-0" />
         <div className="absolute left-[-150px] top-[-150px] w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none z-0" />
-        
+
         {/* Dotted grid pattern */}
         <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0 opacity-40" />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          
+
           {/* Centered Heading */}
           <ScrollReveal className="text-center max-w-3xl mx-auto mb-16 space-y-8" delay={100}>
             <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
               Agar hammasi tushunarli bo'lsa, birgina{" "}
               <span className="relative inline-block px-4 py-1.5 mx-1">
                 <span className="relative z-10 text-white">savol</span>
-                <svg 
-                  className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105" 
-                  viewBox="0 0 100 40" 
+                <svg
+                  className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105"
+                  viewBox="0 0 100 40"
                   preserveAspectRatio="none"
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2.5" 
-                  strokeLinecap="round" 
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <path 
-                    d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11" 
+                  <path
+                    d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11"
                   />
                 </svg>
               </span>{" "}
               qoldi
             </h2>
-            
+
             {/* Styled Question Block */}
             <div className="space-y-6 max-w-3xl mx-auto pt-2 flex flex-col items-center">
-              
+
               {/* Arrow: Hand-drawn curly arrow pointing down */}
               <div className="text-orange-500/90 my-2">
-                <svg 
-                  className="w-48 h-32 transform rotate-12" 
-                  viewBox="0 0 100 60" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="3.6" 
+                <svg
+                  className="w-48 h-32 transform rotate-12"
+                  viewBox="0 0 100 60"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3.6"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
@@ -1380,13 +1374,13 @@ function App() {
 
           {/* Grid Container */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch max-w-5xl mx-auto">
-            
+
             {/* Left side Warning Card */}
             <ScrollReveal className="w-full flex" delay={150}>
               <div className="relative overflow-hidden rounded-3xl border border-red-500/20 bg-gradient-to-br from-red-950/20 via-red-900/10 to-transparent p-8 md:p-10 shadow-[0_0_50px_rgba(239,68,68,0.05)] group/warn w-full h-full flex flex-col justify-between gap-6">
                 <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-red-500/10 rounded-full blur-3xl pointer-events-none group-hover/warn:bg-red-500/15 transition-colors duration-500" />
                 <div className="absolute top-4 right-4 w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_#ef4444]" />
-                
+
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
                     <span className="flex h-3 w-3 relative">
@@ -1395,11 +1389,11 @@ function App() {
                     </span>
                     <span className="text-xs font-mono text-red-400 font-bold uppercase tracking-[0.25em]">Raqobat ogohlantirishi</span>
                   </div>
-                  
+
                   <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-white leading-tight tracking-tight">
                     Siz tayyor bo'lmasangiz — <span className="bg-gradient-to-r from-red-400 via-rose-500 to-rose-400 bg-clip-text text-transparent font-black">raqobatchilaringiz</span> boshlashga allaqachon tayyor 😉
                   </h3>
-                  
+
                   <p className="text-neutral-400 text-sm sm:text-base leading-relaxed font-light">
                     Biznes olamida vaqt — eng qimmatli resurs. Har bir kechiktirilgan kun raqiblaringizga oldinga o'tib olish uchun yangi imkoniyat beradi.
                   </p>
@@ -1435,18 +1429,18 @@ function App() {
                   Bizning Manzil
                 </h4>
                 <div className="relative w-full h-[180px] rounded-2xl overflow-hidden border border-white/5 bg-[#05020a]/40 shadow-inner group">
-                  <iframe 
-                    src="https://www.google.com/maps/d/embed?mid=1SfrMMbNN12I5yH71pM5UPZmpUoiR4JE" 
-                    width="100%" 
-                    className="border-0 opacity-80 hover:opacity-100 transition-opacity duration-300 rounded-2xl absolute -top-[52px] left-0 w-full h-[235px]" 
+                  <iframe
+                    src="https://www.google.com/maps/d/embed?mid=1SfrMMbNN12I5yH71pM5UPZmpUoiR4JE"
+                    width="100%"
+                    className="border-0 opacity-80 hover:opacity-100 transition-opacity duration-300 rounded-2xl absolute -top-[52px] left-0 w-full h-[235px]"
                     allowFullScreen
                     loading="lazy"
                   ></iframe>
                 </div>
-                <a 
-                  href="https://www.google.com/maps/d/u/0/edit?mid=1SfrMMbNN12I5yH71pM5UPZmpUoiR4JE&usp=sharing" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://www.google.com/maps/d/u/0/edit?mid=1SfrMMbNN12I5yH71pM5UPZmpUoiR4JE&usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs text-orange-400 hover:text-orange-300 transition-colors mt-1 font-medium group"
                 >
                   Google Maps'da ochish
@@ -1570,7 +1564,7 @@ function App() {
                   <li>
                     <a href="https://www.facebook.com/share/1A9H5YPDpM/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2">
                       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                       </svg>
                       Facebook
                     </a>
