@@ -892,15 +892,15 @@ function App() {
         <div className="flex flex-col lg:flex-row items-center gap-4 md:gap-8 w-full">
 
           {/* Left Hero Content */}
-          <ScrollReveal className="flex-1 flex flex-col items-start text-left max-w-3xl lg:pl-16 mt-2 md:mt-0" delay={150}>
+          <ScrollReveal className="flex-1 flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-16 mt-2 md:mt-0" delay={150}>
             {/* Main Headline */}
-            <h1 className="font-display font-extrabold text-[8.5vw] sm:text-[6vw] md:text-[5.5vw] lg:text-[66px] tracking-tight leading-[1.15] mb-6 text-white space-y-2">
+            <h1 className="font-display font-extrabold text-[8.5vw] sm:text-[6vw] md:text-[5.5vw] lg:text-[66px] tracking-tight leading-[1.15] mb-6 text-white space-y-2 w-full">
               <div className="block whitespace-nowrap">Biznesingizni</div>
               <div className="block whitespace-nowrap">
                 <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">tizimli</span>{" "}
                 <span>marketing</span>
               </div>
-              <div className="block whitespace-nowrap flex items-center gap-x-2 sm:gap-x-3">
+              <div className="block whitespace-nowrap flex items-center justify-center lg:justify-start gap-x-2 sm:gap-x-3">
                 <span>bilan</span>
                 <TextSlider text="o'stiramiz" className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent font-display font-extrabold text-[8.5vw] sm:text-[6vw] md:text-[5.5vw] lg:text-[66px]" />
               </div>
