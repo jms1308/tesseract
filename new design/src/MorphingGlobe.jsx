@@ -102,12 +102,16 @@ export default function MorphingGlobe() {
     let isDragging = false;
     let prevMouseX = 0;
     let prevMouseY = 0;
+    let dragStartPos = { x: 0, y: 0 };
+    let dragStartTime = 0;
 
     const handleMouseDown = (e) => {
       isDragging = true;
       const rect = canvas.getBoundingClientRect();
       prevMouseX = e.clientX - rect.left;
       prevMouseY = e.clientY - rect.top;
+      dragStartPos = { x: e.clientX, y: e.clientY };
+      dragStartTime = Date.now();
     };
 
     const handleMouseMove = (e) => {
@@ -134,10 +138,31 @@ export default function MorphingGlobe() {
       prevMouseY = my;
     };
 
-    const handleMouseUp = () => {
+    const handleMouseUp = (e) => {
       isDragging = false;
       targetSpeedX = 0.0005;
       targetSpeedY = 0.0008;
+
+      let clientX = e?.clientX;
+      let clientY = e?.clientY;
+
+      if (e?.changedTouches && e.changedTouches[0]) {
+        clientX = e.changedTouches[0].clientX;
+        clientY = e.changedTouches[0].clientY;
+      }
+
+      if (clientX !== undefined && clientY !== undefined) {
+        const dx = clientX - dragStartPos.x;
+        const dy = clientY - dragStartPos.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const timeDiff = Date.now() - dragStartTime;
+        const maxDist = window.innerWidth < 768 ? 25 : 8;
+        const maxTime = window.innerWidth < 768 ? 350 : 300;
+
+        if (dist < maxDist && timeDiff < maxTime) {
+          setShape(prev => prev === 'sphere' ? 'cube' : 'sphere');
+        }
+      }
     };
 
     canvas.addEventListener('mousedown', handleMouseDown);
@@ -151,6 +176,8 @@ export default function MorphingGlobe() {
         const rect = canvas.getBoundingClientRect();
         prevMouseX = e.touches[0].clientX - rect.left;
         prevMouseY = e.touches[0].clientY - rect.top;
+        dragStartPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        dragStartTime = Date.now();
       }
     };
 

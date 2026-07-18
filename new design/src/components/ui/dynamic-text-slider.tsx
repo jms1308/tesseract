@@ -50,7 +50,7 @@ interface OpenSourceSliderProps {
   textClassName?: string;
 }
 
-function OpenSourceSlider({ text, width: initialWidth, height = 76, handleSize = 20, textClassName = "" }: OpenSourceSliderProps) {
+function OpenSourceSlider({ text, width: initialWidth, handleSize = 20, textClassName = "" }: OpenSourceSliderProps) {
   const width = initialWidth > 0 ? initialWidth + 56 : 0;
   
   const [left, setLeft] = useState(0);
@@ -140,8 +140,8 @@ function OpenSourceSlider({ text, width: initialWidth, height = 76, handleSize =
 
   return (
     <div
-      className="relative select-none flex items-center justify-center transition-transform duration-300 ease-out py-1 px-3"
-      style={{ width: width || 'auto', height, transform: `rotate(${dynamicRotation}deg)` }}
+      className="relative select-none flex items-center justify-center transition-transform duration-300 ease-out py-1 px-3 h-[1.25em]"
+      style={{ width: width || 'auto', transform: `rotate(${dynamicRotation}deg)` }}
     >
       <div className="absolute inset-y-1 inset-x-2 rounded-xl border border-orange-500/40 pointer-events-none" />
       {width > 0 && (["left", "right"] as const).map((handle) => {
@@ -155,10 +155,10 @@ function OpenSourceSlider({ text, width: initialWidth, height = 76, handleSize =
             aria-label={handle === "left" ? "Adjust start" : "Adjust end"}
             onPointerDown={(e) => startDrag(handle, e)}
             onKeyDown={nudgeHandle(handle)}
-            className={`z-20 absolute top-2 bottom-2 w-5 rounded-full bg-neutral-900 border border-orange-400/80 flex items-center justify-center cursor-ew-resize focus:outline-none focus:ring-1 focus:ring-orange-400 transition-transform duration-150 ease-in-out opacity-100 ${scaleClass}`}
+            className={`z-20 absolute top-1 bottom-1 sm:top-2 sm:bottom-2 w-4 sm:w-5 rounded-full bg-neutral-900 border border-orange-400/80 flex items-center justify-center cursor-ew-resize focus:outline-none focus:ring-1 focus:ring-orange-400 transition-transform duration-150 ease-in-out opacity-100 ${scaleClass}`}
             style={{ left: x + 8, touchAction: "none" }}
           >
-            <span className="w-0.5 h-4 rounded-full bg-orange-400" />
+            <span className="w-0.5 h-3 sm:h-4 rounded-full bg-orange-400" />
           </button>
         );
       })}
