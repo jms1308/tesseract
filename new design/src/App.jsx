@@ -362,6 +362,17 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [selectedServices, setSelectedServices] = useState([]);
+
+  const servicesList = ['Branding', 'SMM', 'Video Production', 'Marketing Strategiya'];
+
+  const handleToggleService = (service) => {
+    if (selectedServices.includes(service)) {
+      setSelectedServices(selectedServices.filter(s => s !== service));
+    } else {
+      setSelectedServices([...selectedServices, service]);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -385,6 +396,7 @@ const ContactForm = () => {
         </div>
         <div className="bg-neutral-950/80 p-3.5 rounded-lg border border-white/5 text-[11px] leading-relaxed text-emerald-300 font-mono text-left">
           &gt; init-pipeline --user={name.toLowerCase().replace(/ /g, '-')} <br />
+          {selectedServices.length > 0 && <span>&gt; select-services: {selectedServices.join(', ')} <br /></span>}
           <span className="text-neutral-500">Connecting node...</span> <br />
           <span className="text-emerald-400">Connection established. Queue initialized.</span>
         </div>
@@ -393,53 +405,87 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 space-y-6 backdrop-blur-md relative overflow-hidden shadow-2xl">
+    <form onSubmit={handleSubmit} className="h-full flex flex-col justify-between bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden shadow-2xl">
       <div className="absolute -right-16 -top-16 w-36 h-36 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
       
-      <div className="space-y-1">
-        <h3 className="text-lg font-bold text-white">So'rov yuborish</h3>
-        <p className="text-xs text-neutral-400 font-light">Ma'lumotlaringizni qoldiring, biz sizga aloqaga chiqamiz.</p>
-      </div>
-
-      <div className="space-y-4">
-        {/* Name Input */}
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-500">
-            <User className="w-4 h-4" />
-          </div>
-          <input
-            type="text"
-            required
-            placeholder="Ismingiz"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full bg-[#05020a]/80 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all duration-300"
-          />
+      <div className="space-y-6 flex-grow">
+        <div className="space-y-1">
+          <h3 className="text-lg font-bold text-white">So'rov yuborish</h3>
+          <p className="text-xs text-neutral-400 font-light">Ma'lumotlaringizni qoldiring, biz sizga aloqaga chiqamiz.</p>
         </div>
 
-        {/* Phone Input */}
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-500">
-            <Phone className="w-4 h-4" />
+        <div className="space-y-4">
+          {/* Name Input */}
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-500">
+              <User className="w-4 h-4" />
+            </div>
+            <input
+              type="text"
+              required
+              placeholder="Ismingiz"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full bg-[#05020a]/80 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all duration-300"
+            />
           </div>
-          <input
-            type="tel"
-            required
-            placeholder="Telefon raqamingiz"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="w-full bg-[#05020a]/80 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all duration-300"
-          />
+
+          {/* Phone Input */}
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-500">
+              <Phone className="w-4 h-4" />
+            </div>
+            <input
+              type="tel"
+              required
+              placeholder="Telefon raqamingiz"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full bg-[#05020a]/80 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all duration-300"
+            />
+          </div>
+        </div>
+
+        {/* Dynamic Services Selector to Fill Space Beautifully */}
+        <div className="space-y-3 pt-2">
+          <label className="text-xs text-neutral-400 font-medium block">Qaysi yo'nalishlar sizni ko'proq qiziqtiryapti?</label>
+          <div className="flex flex-wrap gap-2">
+            {servicesList.map((service) => {
+              const isSelected = selectedServices.includes(service);
+              return (
+                <button
+                  key={service}
+                  type="button"
+                  onClick={() => handleToggleService(service)}
+                  className={`px-3 py-1.5 rounded-xl text-[11px] font-medium border transition-all duration-300 cursor-pointer ${
+                    isSelected
+                      ? 'bg-orange-500/10 border-orange-500/50 text-orange-400 shadow-[0_0_15px_rgba(249,115,22,0.1)]'
+                      : 'bg-white/[0.02] border-white/5 text-neutral-400 hover:border-white/15 hover:text-neutral-200'
+                  }`}
+                >
+                  {service}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="w-full py-3 bg-gradient-to-r from-orange-500 via-amber-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20 active:scale-98 cursor-pointer"
-      >
-        <span>Hamkorlikni boshlash</span>
-        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-      </button>
+      <div className="space-y-4 mt-8">
+        <button
+          type="submit"
+          className="w-full py-3 bg-gradient-to-r from-orange-500 via-amber-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20 active:scale-98 cursor-pointer"
+        >
+          <span>Hamkorlikni boshlash</span>
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </button>
+
+        {/* Security / trust badge */}
+        <div className="flex items-center justify-center gap-2 text-[10px] font-mono text-neutral-500">
+          <Lock className="w-3 h-3 text-orange-500/60" />
+          <span>Ma'lumotlaringiz shifrlangan holda xavfsiz uzatiladi</span>
+        </div>
+      </div>
     </form>
   );
 };
@@ -1266,46 +1312,73 @@ function App() {
       <section className="relative border-t border-white/5 bg-[#05020a] py-20 lg:py-24 z-10 overflow-hidden" id="contact">
         {/* Background ambient glow */}
         <div className="absolute right-[-150px] bottom-[-150px] w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] pointer-events-none z-0" />
+        <div className="absolute left-[-150px] top-[-150px] w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none z-0" />
         
         {/* Dotted grid pattern */}
         <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0 opacity-40" />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-8 items-center">
+          
+          {/* Centered Heading */}
+          <ScrollReveal className="text-center max-w-3xl mx-auto mb-16 space-y-8" delay={100}>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+              Agar hammasi tushunarli bo'lsa, birgina{" "}
+              <span className="relative inline-block px-4 py-1.5 mx-1">
+                <span className="relative z-10 text-white">savol</span>
+                <svg 
+                  className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105" 
+                  viewBox="0 0 100 40" 
+                  preserveAspectRatio="none"
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <path 
+                    d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11" 
+                  />
+                </svg>
+              </span>{" "}
+              qoldi
+            </h2>
             
-            {/* Left side info */}
-            <ScrollReveal className="flex-1 space-y-8" delay={100}>
-              <div className="space-y-4 text-center md:text-left">
-                <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
-                  Agar hammasi tushunarli bo'lsa, birgina{" "}
-                  <span className="relative inline-block px-4 py-1.5 mx-1">
-                    <span className="relative z-10 text-white">savol</span>
-                    <svg 
-                      className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105" 
-                      viewBox="0 0 100 40" 
-                      preserveAspectRatio="none"
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2.5" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round"
-                    >
-                      <path 
-                        d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11" 
-                      />
-                    </svg>
-                  </span>{" "}
-                  qoldi
-                </h2>
-                <p className="text-neutral-400 text-sm md:text-base leading-relaxed font-light">
-                  Manfaatli hamkorlik qilishga tayyormisiz? Agar javobingiz ha bo'lsa biz shu yerdamiz.
-                </p>
+            {/* Styled Question Block */}
+            <div className="space-y-6 max-w-3xl mx-auto pt-2 flex flex-col items-center">
+              
+              {/* Arrow: Hand-drawn curly arrow pointing down */}
+              <div className="text-orange-500/90 my-2">
+                <svg 
+                  className="w-48 h-32 transform rotate-12" 
+                  viewBox="0 0 100 60" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="3.6" 
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {/* A hand-drawn style loop going down */}
+                  <path d="M40 5 C 60 0, 75 10, 60 25 C 45 40, 35 25, 48 48 C 50 50, 52 52, 54 53" />
+                  {/* Arrowhead */}
+                  <path d="M44 46 L54 53 L52 41" />
+                </svg>
               </div>
 
-              {/* Modern High-Impact Competitor Warning Card */}
-              <div className="relative overflow-hidden rounded-3xl border border-red-500/20 bg-gradient-to-br from-red-950/20 via-red-900/10 to-transparent p-8 md:p-10 shadow-[0_0_50px_rgba(239,68,68,0.05)] group/warn w-full max-w-lg">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white leading-relaxed text-center">
+                Manfaatli hamkorlik qilishga tayyormisiz? <br />
+                Agar javobingiz ha bo'lsa, biz shu yerdamiz.
+              </h3>
+            </div>
+          </ScrollReveal>
+
+          {/* Grid Container */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch max-w-5xl mx-auto">
+            
+            {/* Left side Warning Card */}
+            <ScrollReveal className="w-full flex" delay={150}>
+              <div className="relative overflow-hidden rounded-3xl border border-red-500/20 bg-gradient-to-br from-red-950/20 via-red-900/10 to-transparent p-8 md:p-10 shadow-[0_0_50px_rgba(239,68,68,0.05)] group/warn w-full h-full flex flex-col justify-between gap-6">
                 <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-red-500/10 rounded-full blur-3xl pointer-events-none group-hover/warn:bg-red-500/15 transition-colors duration-500" />
-                <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-red-500 animate-ping" />
+                <div className="absolute top-4 right-4 w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_#ef4444]" />
                 
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
@@ -1328,8 +1401,10 @@ function App() {
             </ScrollReveal>
 
             {/* Right side form */}
-            <ScrollReveal className="flex-1 w-full max-w-md" delay={200} yOffset={45}>
-              <ContactForm />
+            <ScrollReveal className="w-full flex" delay={250} yOffset={45}>
+              <div className="w-full h-full">
+                <ContactForm />
+              </div>
             </ScrollReveal>
 
           </div>
