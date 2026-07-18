@@ -921,13 +921,18 @@ function App() {
         <div className="flex flex-col lg:flex-row items-center gap-4 md:gap-8 w-full">
           
           {/* Left Hero Content */}
-          <ScrollReveal className="flex-1 flex flex-col items-start text-left max-w-2xl lg:pl-16 mt-2 md:mt-0" delay={150}>
+          <ScrollReveal className="flex-1 flex flex-col items-start text-left max-w-3xl lg:pl-16 mt-2 md:mt-0" delay={150}>
             {/* Main Headline */}
-            <h1 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-[66px] tracking-tight leading-[1.15] mb-6 text-white flex flex-wrap items-center gap-x-3 gap-y-1">
-              <span>Biznesingizni</span> <br />
-              <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">tizimli</span>
-              <span>marketing bilan</span>
-              <TextSlider text="o'stiramiz" className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent font-display font-extrabold text-5xl sm:text-6xl lg:text-[66px]" />
+            <h1 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-[66px] tracking-tight leading-[1.15] mb-6 text-white space-y-2">
+              <div className="block">Biznesingizni</div>
+              <div className="block sm:whitespace-nowrap">
+                <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">tizimli</span>{" "}
+                <span>marketing</span>
+              </div>
+              <div className="block sm:whitespace-nowrap flex items-center flex-wrap gap-x-3">
+                <span>bilan</span>
+                <TextSlider text="o'stiramiz" className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent font-display font-extrabold text-5xl sm:text-6xl lg:text-[66px]" />
+              </div>
             </h1>
 
             {/* Description */}
@@ -1364,9 +1369,18 @@ function App() {
                 </svg>
               </div>
 
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white leading-relaxed text-center">
-                Manfaatli hamkorlik qilishga tayyormisiz? <br />
-                Agar javobingiz ha bo'lsa, biz shu yerdamiz.
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-extrabold text-center leading-relaxed text-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white">
+                  Manfaatli hamkorlik qilishga tayyormisiz? <br />
+                  Agar javobingiz{" "}
+                </span>
+                <span className="relative inline-block text-orange-400 px-1.5 font-black">
+                  ha
+                  <span className="absolute bottom-1 left-0 w-full h-[3px] bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+                </span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white">
+                  {" "}bo'lsa, biz shu yerdamiz.
+                </span>
               </h3>
             </div>
           </ScrollReveal>
