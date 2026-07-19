@@ -904,6 +904,39 @@ function App() {
   const headerRef = useRef(null);
 
   useEffect(() => {
+    // Dynamic SEO Titles and Descriptions
+    if (view.page === 'service' && view.service) {
+      const isUz = lang === 'uz';
+      document.title = isUz 
+        ? `${view.service} Xizmati — Tesseract Marketing` 
+        : `Услуга ${view.service} — Tesseract Marketing`;
+    } else {
+      document.title = lang === 'uz' 
+        ? 'Tesseract Marketing Agentligi — Tizimli Marketing Xizmatlari' 
+        : 'Tesseract Marketing Agency — Системный маркетинг в Узбекистане';
+    }
+
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    
+    if (view.page === 'service' && view.service) {
+      metaDesc.setAttribute('content', lang === 'uz'
+        ? `Tesseract Marketing-dan professional ${view.service} xizmatlari. Biznesingiz uchun kafolatlangan natija va tizimli yondashuv.`
+        : `Профессиональные услуги ${view.service} от Tesseract Marketing. Гарантированный результат и системный подход для вашего бизнеса.`
+      );
+    } else {
+      metaDesc.setAttribute('content', lang === 'uz'
+        ? 'Biznesingizni tizimli marketing bilan o\'stiramiz. Performance marketing, SMM, Video Production, Content Marketing va professional brending xizmatlari.'
+        : 'Развиваем ваш бизнес с помощью системного маркетинга в Узбекистане. Услуги перформанс-маркетинга, SMM, видеопроизводства и брендинга.'
+      );
+    }
+  }, [lang, view]);
+
+  useEffect(() => {
     const handleOutsideClick = (event) => {
       if (mobileMenuOpen && headerRef.current && !headerRef.current.contains(event.target)) {
         setMobileMenuOpen(false);
@@ -935,11 +968,11 @@ function App() {
       <div className="absolute bottom-0 left-0 right-0 h-[300px] bg-[radial-gradient(circle_at_bottom,rgba(249,115,22,0.02),transparent_70%)] pointer-events-none z-0" />
 
       {/* Navigation Header */}
-      <header ref={headerRef} className="fixed top-5 left-0 right-0 z-50 px-4">
-        <div className="max-w-7xl mx-auto px-8 h-16 rounded-full border border-white/5 bg-[#05020a]/80 backdrop-blur-md flex items-center justify-between shadow-xl shadow-orange-950/5">
-          <div className="flex items-center gap-1.5 h-10 md:h-12">
+      <header ref={headerRef} className="fixed top-5 left-0 right-0 z-50 px-2 sm:px-4">
+        <div className="max-w-7xl mx-auto pl-2 pr-4 sm:px-6 md:px-8 h-16 rounded-full border border-white/5 bg-[#05020a]/80 backdrop-blur-md flex items-center justify-between shadow-xl shadow-orange-950/5">
+          <div className="flex items-center gap-1 h-12">
             <img src="/logo_icon.svg" alt="Tesseract Logo" className="h-full w-auto object-contain" />
-            <img src="/logo_text.svg" alt="Tesseract Marketing" className="h-5 md:h-7 w-auto object-contain" />
+            <img src="/logo_text.svg" alt="Tesseract Marketing" className="h-9 sm:h-9 md:h-8 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
