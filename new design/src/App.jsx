@@ -972,7 +972,7 @@ function App() {
         <div className="max-w-7xl mx-auto pl-2 pr-4 sm:px-6 md:px-8 h-16 rounded-full border border-white/5 bg-[#05020a]/80 backdrop-blur-md flex items-center justify-between shadow-xl shadow-orange-950/5">
           <div className="flex items-center gap-1 h-12">
             <img src="/logo_icon.svg" alt="Tesseract Logo" className="h-full w-auto object-contain" />
-            <img src="/logo_text.svg" alt="Tesseract Marketing" className="h-9 sm:h-9 md:h-8 w-auto object-contain" />
+            <img src="/logo_text.svg" alt="Tesseract Marketing" className="h-[24px] min-[360px]:h-[28px] min-[385px]:h-[32px] sm:h-9 md:h-8 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
