@@ -841,8 +841,8 @@ function App() {
       <header className="fixed top-5 left-0 right-0 z-50 px-4">
         <div className="max-w-7xl mx-auto px-8 h-16 rounded-full border border-white/5 bg-[#05020a]/80 backdrop-blur-md flex items-center justify-between shadow-xl shadow-orange-950/5">
           <div className="flex items-center gap-1 h-14">
-            <img src="/logo_icon.png" alt="Tesseract Logo" className="h-full w-auto object-contain" />
-            <img src="/logo_text.png" alt="Tesseract Marketing" className="h-10 sm:h-11 w-auto object-contain" />
+            <img src="/logo_icon.svg" alt="Tesseract Logo" className="h-full w-auto object-contain" />
+            <img src="/logo_text.svg" alt="Tesseract Marketing" className="h-8 sm:h-9 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
