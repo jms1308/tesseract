@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Activity,
   Cpu,
@@ -319,7 +320,7 @@ const whyChooseUs = [
   },
   {
     title: "Natijaga yo'naltirilgan metrika",
-    highlight: "Oddiy layklar emas, balki ROI. Quruq shovqin emas, balki haqiqiy biznes natijasi.",
+    highlight: "Diqqat jalb qilish oson — biznesga foyda keltirish qiyin. Biz aynan shu qiyin ishni qilamiz.",
     description: "Bizning maqsadimiz 'chiroyli' raqamlar emas, real biznes natijasidir: Reqamlar bilan o'ynashmaymiz, biz uchun sotuvlar va brend qiymatining o'sishi muhim. Har bir harakatimiz faqat savdoni ko'paytirishga xizmat qiladi.",
     icon: <BarChart3 className="w-6 h-6" />
   },
@@ -334,6 +335,7 @@ const whyChooseUs = [
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [selectedServices, setSelectedServices] = useState([]);
 
@@ -347,33 +349,92 @@ const ContactForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (name && phone) {
-      setSubmitted(true);
+      setIsLoading(true);
+      try {
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRMyTPl7h9eBBRSvz4ccVzlSIQSPgnCFyaWIl9NajuYIbaWI2NllOWsrvkdLB2P9fu3g/exec";
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify({
+            ism: name,
+            nomer: phone,
+            soha: selectedServices.join(', ')
+          })
+        });
+      } catch (err) {
+        console.error("Error sending to Google Sheets:", err);
+      } finally {
+        setIsLoading(false);
+        setSubmitted(true);
+      }
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="h-full flex flex-col justify-center items-center bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden shadow-2xl min-h-[400px]">
+        <div className="absolute -right-16 -top-16 w-36 h-36 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="relative flex items-center justify-center mb-6">
+          {/* Rotating gradient ring */}
+          <div className="w-16 h-16 rounded-full border-2 border-t-orange-500 border-r-transparent border-b-transparent border-l-transparent animate-spin" />
+          <div className="absolute w-10 h-10 rounded-full bg-orange-500/10 animate-pulse" />
+        </div>
+        
+        <span className="text-[10px] font-mono text-orange-500 uppercase tracking-widest block font-semibold animate-pulse">
+          Yuborilmoqda...
+        </span>
+      </div>
+    );
+  }
+
   if (submitted) {
     return (
-      <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-3xl p-8 text-center space-y-6 backdrop-blur-md">
-        <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto animate-bounce">
-          <Zap className="w-6 h-6" />
-        </div>
-        <div className="space-y-2">
-          <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block">System Connected</span>
-          <h3 className="text-xl font-bold text-white">Hamkorlik muvaffaqiyatli boshlandi!</h3>
-          <p className="text-sm text-neutral-400 font-light max-w-xs mx-auto">
-            Tez orada mutaxassislarimiz siz bilan bog'lanib, loyihangizni tahlil qilishni boshlaydilar.
+      <motion.div
+        initial={{ opacity: 0, scale: 0.93, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="h-full flex flex-col justify-center items-center bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden shadow-2xl min-h-[400px] text-center"
+      >
+        <div className="absolute -right-16 -top-16 w-36 h-36 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
+        
+        {/* Animated Glowing Success Icon */}
+        <motion.div
+          initial={{ scale: 0, rotate: -25 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+          className="relative flex items-center justify-center mb-6"
+        >
+          <div className="absolute w-20 h-20 rounded-full bg-orange-500/10 animate-ping opacity-75" />
+          <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-orange-500 via-amber-500 to-red-500 border border-orange-500/30 flex items-center justify-center text-white shadow-[0_0_30px_rgba(249,115,22,0.4)]">
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.15, duration: 0.3 }}
+            >
+              <ShieldCheck className="w-8 h-8" />
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.4 }}
+          className="space-y-2"
+        >
+          <h3 className="text-2xl font-black text-white tracking-wide bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent">Yuborildi!</h3>
+          <p className="text-xs text-neutral-400 font-light max-w-[200px] mx-auto leading-relaxed">
+            Tez orada bog'lanamiz
           </p>
-        </div>
-        <div className="bg-neutral-950/80 p-3.5 rounded-lg border border-white/5 text-[11px] leading-relaxed text-emerald-300 font-mono text-left">
-          &gt; init-pipeline --user={name.toLowerCase().replace(/ /g, '-')} <br />
-          {selectedServices.length > 0 && <span>&gt; select-services: {selectedServices.join(', ')} <br /></span>}
-          <span className="text-neutral-500">Connecting node...</span> <br />
-          <span className="text-emerald-400">Connection established. Queue initialized.</span>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     );
   }
 
@@ -908,7 +969,7 @@ function App() {
 
             {/* Description */}
             <p className="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-xl">
-              Strategiya, kreativ va texnologiyani uyg'unlashtirib, brendingizni keyingi darajaga olib chiqamiz.
+              Biz taxmin qilmaymiz, isbotlaymiz. Muammoni tahlil qilamiz, yechim yaratamiz, natijani raqamda ko'rsatamiz.
             </p>
           </ScrollReveal>
 
@@ -1230,7 +1291,7 @@ function App() {
                   </div>
                   <h3 className="text-lg font-bold text-neutral-300">Kafolat ortig'i bilan</h3>
                   <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                    Aksariyat mijozlarimiz bilan shartnomada kelishilgan kafolatlarimizni kamida 8 barobar ortig'i bilan bajaramiz.
+                    Aksariyat mijozlarimiz bilan shartnomada kelishilgan kafolatlarimizni kamida 8 barobar ortig'i bilan bajarganmiz va barcha mijozlarimizga kafolatdan ortig'ini bajarishga harakat qilamiz.
                   </p>
                 </div>
                 <div className="flex items-end justify-between w-full">
