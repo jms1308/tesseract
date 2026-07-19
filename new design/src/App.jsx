@@ -354,7 +354,7 @@ const ContactForm = () => {
     if (name && phone) {
       setIsLoading(true);
       try {
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRMyTPl7h9eBBRSvz4ccVzlSIQSPgnCFyaWIl9NajuYIbaWI2NllOWsrvkdLB2P9fu3g/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw0HmH8jkJ0AoI-2vaQrJb1cWD6RsKNzY1ItbY0nE_75RxLM6VcZ6cgOq4Vmt6JBgXizA/exec";
         await fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
           mode: "no-cors",
@@ -380,13 +380,13 @@ const ContactForm = () => {
     return (
       <div className="h-full flex flex-col justify-center items-center bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden shadow-2xl min-h-[400px]">
         <div className="absolute -right-16 -top-16 w-36 h-36 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
-        
+
         <div className="relative flex items-center justify-center mb-6">
           {/* Rotating gradient ring */}
           <div className="w-16 h-16 rounded-full border-2 border-t-orange-500 border-r-transparent border-b-transparent border-l-transparent animate-spin" />
           <div className="absolute w-10 h-10 rounded-full bg-orange-500/10 animate-pulse" />
         </div>
-        
+
         <span className="text-[10px] font-mono text-orange-500 uppercase tracking-widest block font-semibold animate-pulse">
           Yuborilmoqda...
         </span>
@@ -403,7 +403,7 @@ const ContactForm = () => {
         className="h-full flex flex-col justify-center items-center bg-[#0b0813]/60 border border-white/5 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden shadow-2xl min-h-[400px] text-center"
       >
         <div className="absolute -right-16 -top-16 w-36 h-36 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
-        
+
         {/* Animated Glowing Success Icon */}
         <motion.div
           initial={{ scale: 0, rotate: -25 }}
@@ -422,7 +422,6 @@ const ContactForm = () => {
             </motion.div>
           </div>
         </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -474,7 +473,7 @@ const ContactForm = () => {
               required
               placeholder="Telefon raqamingiz"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
               className="w-full bg-[#05020a]/80 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all duration-300"
             />
           </div>
@@ -492,8 +491,8 @@ const ContactForm = () => {
                   type="button"
                   onClick={() => handleToggleService(service)}
                   className={`px-3 py-1.5 rounded-xl text-[11px] font-medium border transition-all duration-300 cursor-pointer ${isSelected
-                      ? 'bg-orange-500/10 border-orange-500/50 text-orange-400 shadow-[0_0_15px_rgba(249,115,22,0.1)]'
-                      : 'bg-white/[0.02] border-white/5 text-neutral-400 hover:border-white/15 hover:text-neutral-200'
+                    ? 'bg-orange-500/10 border-orange-500/50 text-orange-400 shadow-[0_0_15px_rgba(249,115,22,0.1)]'
+                    : 'bg-white/[0.02] border-white/5 text-neutral-400 hover:border-white/15 hover:text-neutral-200'
                     }`}
                 >
                   {service}
@@ -893,8 +892,8 @@ function App() {
         {/* Mobile Navigation Dropdown with smooth animated transition */}
         <div
           className={`md:hidden absolute left-4 right-4 top-20 border border-white/10 bg-[#05020a]/95 backdrop-blur-xl px-6 py-8 flex flex-col gap-5 rounded-3xl transition-all duration-500 ease-out origin-top ${mobileMenuOpen
-              ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
-              : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'
+            ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
+            : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'
             }`}
         >
           <a
