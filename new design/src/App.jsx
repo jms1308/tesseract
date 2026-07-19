@@ -901,6 +901,19 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [view, setView] = useState({ page: 'home', service: null });
   const [lang, setLang] = useState('uz');
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (mobileMenuOpen && headerRef.current && !headerRef.current.contains(event.target)) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [mobileMenuOpen]);
 
   if (view.page === 'service') {
     return (
@@ -922,11 +935,11 @@ function App() {
       <div className="absolute bottom-0 left-0 right-0 h-[300px] bg-[radial-gradient(circle_at_bottom,rgba(249,115,22,0.02),transparent_70%)] pointer-events-none z-0" />
 
       {/* Navigation Header */}
-      <header className="fixed top-5 left-0 right-0 z-50 px-4">
+      <header ref={headerRef} className="fixed top-5 left-0 right-0 z-50 px-4">
         <div className="max-w-7xl mx-auto px-8 h-16 rounded-full border border-white/5 bg-[#05020a]/80 backdrop-blur-md flex items-center justify-between shadow-xl shadow-orange-950/5">
-          <div className="flex items-center gap-1 h-14">
+          <div className="flex items-center gap-1.5 h-10 md:h-12">
             <img src="/logo_icon.svg" alt="Tesseract Logo" className="h-full w-auto object-contain" />
-            <img src="/logo_text.svg" alt="Tesseract Marketing" className="h-8 sm:h-9 w-auto object-contain" />
+            <img src="/logo_text.svg" alt="Tesseract Marketing" className="h-5 md:h-7 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
