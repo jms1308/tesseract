@@ -1,4 +1,4 @@
-import { TrendingUp, Share2, FileText, Sparkles, Video } from "lucide-react";
+import { TrendingUp, Share2, FileText, Sparkles, Video, ArrowUpRight } from "lucide-react";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 
 const features = [
@@ -28,9 +28,10 @@ const features = [
     description: "Mazmunli va kreativ kontent bilan auditoriya ishonchini qozonib, sotuvlarni oshiramiz.",
     href: "#",
     cta: "Batafsil",
-    background: <img src="/content_bg.png" className="absolute inset-0 opacity-0 object-cover w-full h-full mix-blend-overlay transition-opacity duration-700 group-hover:opacity-60" alt="bg" />,
+    background: <img src="/content_bg_minimal.png" className="absolute inset-0 opacity-0 object-cover w-full h-full transition-opacity duration-700 group-hover:opacity-35" alt="bg" />,
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
     isSmall: true,
+    HoverIcon: ArrowUpRight,
   },
   {
     Icon: Sparkles,

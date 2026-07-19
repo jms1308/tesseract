@@ -32,6 +32,7 @@ const BentoCard = ({
   cta,
   isSmall,
   onCtaClick,
+  HoverIcon = ArrowRight,
 }: {
   name: string;
   className: string;
@@ -41,6 +42,7 @@ const BentoCard = ({
   cta: string;
   isSmall?: boolean;
   onCtaClick?: () => void;
+  HoverIcon?: any;
 }) => (
   <div
     key={name}
@@ -83,7 +85,11 @@ const BentoCard = ({
       >
         <span className="md:hidden">Batafsil o'qish</span>
         <span className="hidden md:inline">{cta}</span>
-        <ArrowRight className="ml-1 h-3 w-3 md:ml-1.5 md:h-3.5 md:w-3.5" />
+        {HoverIcon === ArrowRight ? (
+          <ArrowRight className="ml-1 h-3 w-3 md:ml-1.5 md:h-3.5 md:w-3.5 transition-transform group-hover:translate-x-0.5" />
+        ) : (
+          <HoverIcon className="ml-1 h-2.5 w-2.5 md:ml-1 md:h-3 md:w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-orange-400" />
+        )}
       </Button>
     </div>
     <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-500 group-hover:bg-gradient-to-t group-hover:from-[#05020a] group-hover:to-transparent opacity-80" />

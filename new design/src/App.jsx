@@ -827,7 +827,6 @@ function App() {
       />
     );
   }
-
   return (
     <div className="min-h-screen bg-[#05020a] text-[#f3f4f6] relative overflow-hidden selection:bg-orange-500 selection:text-white">
       {/* Background Effects */}
@@ -840,11 +839,10 @@ function App() {
 
       {/* Navigation Header */}
       <header className="fixed top-5 left-0 right-0 z-50 px-4">
-        <div className="max-w-7xl mx-auto px-8 h-16 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-md flex items-center justify-between shadow-xl shadow-orange-950/5">
-          <div className="flex items-center gap-2">
-            <span className="font-display font-extrabold text-lg tracking-wider bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent leading-none text-left">
-              TESSERACT<br /><span className="text-[9px] uppercase tracking-[0.3em] text-neutral-400 font-semibold">MARKETING</span>
-            </span>
+        <div className="max-w-7xl mx-auto px-8 h-16 rounded-full border border-white/5 bg-[#05020a]/80 backdrop-blur-md flex items-center justify-between shadow-xl shadow-orange-950/5">
+          <div className="flex items-center gap-1 h-14">
+            <img src="/logo_icon.png" alt="Tesseract Logo" className="h-full w-auto object-contain" />
+            <img src="/logo_text.png" alt="Tesseract Marketing" className="h-10 sm:h-11 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
