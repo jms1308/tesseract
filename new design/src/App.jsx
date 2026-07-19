@@ -293,53 +293,95 @@ const TimelineItem = ({ item, idx, isEven }) => {
   );
 };
 
-const whyChooseUs = [
-  {
-    title: "Kafolatlangan natija",
-    highlight: "Kelishilgan natijaga belgilangan muddatda erisha olmasak, natijaga chiqquncha bepul xizmat ko'rsatamiz.",
-    description: "Biz o'z ishimizga 100% ishonamiz. Agar shartnomada ko'rsatilgan ko'rsatkichlarga (obunachilar soni, faollik, murojaatlar) muddatida erisha olmasak, siz bir tiyin to'lamasdan hamkorlikni davom ettiramiz. Risk bizda, natija esa sizda.",
-    icon: <ShieldCheck className="w-6 h-6" />
-  },
-  {
-    title: "Maxsus strategiya",
-    highlight: "Biz umumiy shablonlar bilan emas, sizning bozoringizga moslashgan strategiya bilan ishlaymiz.",
-    description: "Stomatologiya uchun bir yondashuv, turizm va mahsulot biznesi uchun boshqa. Biz raqobatchilaringizni, auditoriyangizni va bozor o'ziga xosliklarini chuqur tahlil qilib, faqat sizga mos strategiya tuzamiz. Umumiy andozalar yo'q.",
-    icon: <Target className="w-6 h-6" />
-  },
-  {
-    title: "Professional jamoa",
-    highlight: "Bitta 'Marketolog' emas, balki har bir yo'nalish bo'yicha ekspertlardan iborat to'liq komanda.",
-    description: "Sizning loyihangiz ustida kontent-meyker, kopirayter, SMM menejer, dizayner, videograf va montajchi ishlaydi. Har bir jamoa a'zosi o'z sohasining haqiqiy professionalidir.",
-    icon: <Users className="w-6 h-6" />
-  },
-  {
-    title: "To'liq shaffoflik",
-    highlight: "Notion + Telegram tizimlari orqali real-time jarayonni to'liq kuzating.",
-    description: "Har kuni nima qilinyapti, qaysi bosqichdamiz, qanday natijalar kelayapti - hammasini jonli kuzatasiz. Haftalik hisobotlar, oylik tahlillar va video qo'ng'iroqlar orqali biz bilan doimiy aloqada bo'lasiz.",
-    icon: <Eye className="w-6 h-6" />
-  },
-  {
-    title: "Natijaga yo'naltirilgan metrika",
-    highlight: "Diqqat jalb qilish oson — biznesga foyda keltirish qiyin. Biz aynan shu qiyin ishni qilamiz.",
-    description: "Bizning maqsadimiz 'chiroyli' raqamlar emas, real biznes natijasidir: Reqamlar bilan o'ynashmaymiz, biz uchun sotuvlar va brend qiymatining o'sishi muhim. Har bir harakatimiz faqat savdoni ko'paytirishga xizmat qiladi.",
-    icon: <BarChart3 className="w-6 h-6" />
-  },
-  {
-    title: "Tajribaga asoslangan yondashuv",
-    highlight: "2022-yildan beri 30+ brend va 50+ shaxsiy brend egalariga yordam berdik.",
-    description: "Biz nazariya emas, amaliyot tarafdorimiz. Stomatologiya, kosmetologiya, turizm, ta'lim, sport, restoran va boshqa ko'plab sohalarda real natijalarga erishdik va yechimlarni mukammal bilamiz.",
-    icon: <Briefcase className="w-6 h-6" />
-  }
-];
+const whyChooseUsData = {
+  uz: [
+    {
+      title: "Kafolatlangan natija",
+      highlight: "Kelishilgan natijaga belgilangan muddatda erisha olmasak, natijaga chiqquncha bepul xizmat ko'rsatamiz.",
+      description: "Biz o'z ishimizga 100% ishonamiz. Agar shartnomada ko'rsatilgan ko'rsatkichlarga (obunachilar soni, faollik, murojaatlar) muddatida erisha olmasak, siz bir tiyin to'lamasdan hamkorlikni davom ettiramiz. Risk bizda, natija esa sizda.",
+      icon: <ShieldCheck className="w-6 h-6" />
+    },
+    {
+      title: "Maxsus strategiya",
+      highlight: "Biz umumiy shablonlar bilan emas, sizning bozoringizga moslashgan strategiya bilan ishlaymiz.",
+      description: "Stomatologiya uchun bir yondashuv, turizm va mahsulot biznesi uchun boshqa. Biz raqobatchilaringizni, auditoriyangizni va bozor o'ziga xosliklarini chuqur tahlil qilib, faqat sizga mos strategiya tuzamiz. Umumiy andozalar yo'q.",
+      icon: <Target className="w-6 h-6" />
+    },
+    {
+      title: "Professional jamoa",
+      highlight: "Bitta 'Marketolog' emas, balki har bir yo'nalish bo'yicha ekspertlardan iborat to'liq komanda.",
+      description: "Sizning loyihangiz ustida kontent-meyker, kopirayter, SMM menejer, dizayner, videograf va montajchi ishlaydi. Har bir jamoa a'zosi o'z sohasining haqiqiy professionalidir.",
+      icon: <Users className="w-6 h-6" />
+    },
+    {
+      title: "To'liq shaffoflik",
+      highlight: "Notion + Telegram tizimlari orqali real-time jarayonni to'liq kuzating.",
+      description: "Har kuni nima qilinyapti, qaysi bosqichdamiz, qanday natijalar kelayapti - hammasini jonli kuzatasiz. Haftalik hisobotlar, oylik tahlillar va video qo'ng'iroqlar orqali biz bilan doimiy aloqada bo'lasiz.",
+      icon: <Eye className="w-6 h-6" />
+    },
+    {
+      title: "Natijaga yo'naltirilgan metrika",
+      highlight: "Diqqat jalb qilish oson — biznesga foyda keltirish qiyin. Biz aynan shu qiyin ishni qilamiz.",
+      description: "Bizning maqsadimiz 'chiroyli' raqamlar emas, real biznes natijasidir: Reqamlar bilan o'ynashmaymiz, biz uchun sotuvlar va brend qiymatining o'sishi muhim. Har bir harakatimiz faqat savdoni ko'paytirishga xizmat qiladi.",
+      icon: <BarChart3 className="w-6 h-6" />
+    },
+    {
+      title: "Tajribaga asoslangan yondashuv",
+      highlight: "2022-yildan beri 30+ brend va 50+ shaxsiy brend egalariga yordam berdik.",
+      description: "Biz nazariya emas, amaliyot tarafdorimiz. Stomatologiya, kosmetologiya, turizm, ta'lim, sport, restoran va boshqa ko'plab sohalarda real natijalarga erishdik va yechimlarni mukammal bilamiz.",
+      icon: <Briefcase className="w-6 h-6" />
+    }
+  ],
+  ru: [
+    {
+      title: "Гарантированный результат",
+      highlight: "Если мы не достигнем согласованного результата в установленные сроки, мы будем работать бесплатно до его достижения.",
+      description: "Мы уверены в своей работе на 100%. Если мы не достигнем показателей, указанных в договоре (количество подписчиков, вовлеченность, заявки), мы продолжим сотрудничество бесплатно. Риск лежит на нас, а результат — на вас.",
+      icon: <ShieldCheck className="w-6 h-6" />
+    },
+    {
+      title: "Индивидуальная стратегия",
+      highlight: "Мы работаем не по общим шаблонам, а по стратегии, адаптированной под ваш рынок.",
+      description: "Один подход для стоматологии, другой для туризма и товарного бизнеса. Мы детально анализируем ваших конкурентов, аудиторию и особенности рынка, создавая стратегию исключительно под вас. Никаких шаблонов.",
+      icon: <Target className="w-6 h-6" />
+    },
+    {
+      title: "Профессиональная команда",
+      highlight: "Не один универсальный «маркетолог», а целая команда экспертов по каждому направлению.",
+      description: "Над вашим проектом работают контент-мейкер, копирайтер, SMM-менеджер, дизайнер, видеограф и монтажер. Каждый член команды — настоящий профессионал своего дела.",
+      icon: <Users className="w-6 h-6" />
+    },
+    {
+      title: "Полная прозрачность",
+      highlight: "Следите за всеми процессами в реальном времени через системы Notion + Telegram.",
+      description: "Вы будете видеть, что делается каждый день, на каком мы этапе и какие результаты получаем. Постоянная связь через еженедельные отчеты, ежемесячную аналитику и видеозвонки.",
+      icon: <Eye className="w-6 h-6" />
+    },
+    {
+      title: "Метрики на результат",
+      highlight: "Привлечь внимание легко — принести пользу бизнесу сложно. Мы делаем именно это.",
+      description: "Наша цель — не «красивые» цифры, а реальный бизнес-результат. Мы не играем с показателями, для нас важен рост продаж и ценности бренда. Каждое действие направлено на увеличение ваших продаж.",
+      icon: <BarChart3 className="w-6 h-6" />
+    },
+    {
+      title: "Подход на основе опыта",
+      highlight: "С 2022 года мы помогли более 30 брендам и 50+ владельцам личных брендов.",
+      description: "Мы сторонники практики, а не теории. Мы достигли реальных результатов в стоматологии, косметологии, туризме, образовании, спорте, ресторанном бизнесе и отлично знаем рабочие решения.",
+      icon: <Briefcase className="w-6 h-6" />
+    }
+  ]
+};
 
-const ContactForm = () => {
+const ContactForm = ({ lang = 'uz' }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [selectedServices, setSelectedServices] = useState([]);
 
-  const servicesList = ['Branding', 'SMM', 'Video Production', 'Marketing Strategiya'];
+  const servicesList = lang === 'uz'
+    ? ['Branding', 'SMM', 'Video Production', 'Marketing Strategiya']
+    : ['Брендинг', 'SMM', 'Видеопроизводство', 'Маркетинговая стратегия'];
 
   const handleToggleService = (service) => {
     if (selectedServices.includes(service)) {
@@ -388,7 +430,7 @@ const ContactForm = () => {
         </div>
 
         <span className="text-[10px] font-mono text-orange-500 uppercase tracking-widest block font-semibold animate-pulse">
-          Yuborilmoqda...
+          {lang === 'uz' ? 'Yuborilmoqda...' : 'Отправка...'}
         </span>
       </div>
     );
@@ -428,9 +470,11 @@ const ContactForm = () => {
           transition={{ delay: 0.25, duration: 0.4 }}
           className="space-y-2"
         >
-          <h3 className="text-2xl font-black text-white tracking-wide bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent">Yuborildi!</h3>
+          <h3 className="text-2xl font-black text-white tracking-wide bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent">
+            {lang === 'uz' ? 'Yuborildi!' : 'Отправлено!'}
+          </h3>
           <p className="text-xs text-neutral-400 font-light max-w-[200px] mx-auto leading-relaxed">
-            Tez orada bog'lanamiz
+            {lang === 'uz' ? 'Tez orada bog\'lanamiz' : 'Мы свяжемся с вами в ближайшее время'}
           </p>
         </motion.div>
       </motion.div>
@@ -443,8 +487,14 @@ const ContactForm = () => {
 
       <div className="space-y-6 flex-grow">
         <div className="space-y-1">
-          <h3 className="text-lg font-bold text-white">So'rov yuborish</h3>
-          <p className="text-xs text-neutral-400 font-light">Ma'lumotlaringizni qoldiring, biz sizga aloqaga chiqamiz.</p>
+          <h3 className="text-lg font-bold text-white">
+            {lang === 'uz' ? 'So\'rov yuborish' : 'Отправить запрос'}
+          </h3>
+          <p className="text-xs text-neutral-400 font-light">
+            {lang === 'uz' 
+              ? 'Ma\'lumotlaringizni qoldiring, biz sizga aloqaga chiqamiz.' 
+              : 'Оставьте свои данные, и мы свяжемся с вами.'}
+          </p>
         </div>
 
         <div className="space-y-4">
@@ -456,7 +506,7 @@ const ContactForm = () => {
             <input
               type="text"
               required
-              placeholder="Ismingiz"
+              placeholder={lang === 'uz' ? 'Ismingiz' : 'Ваше имя'}
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full bg-[#05020a]/80 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all duration-300"
@@ -471,7 +521,7 @@ const ContactForm = () => {
             <input
               type="tel"
               required
-              placeholder="Telefon raqamingiz"
+              placeholder={lang === 'uz' ? 'Telefon raqamingiz' : 'Номер телефона'}
               value={phone}
               onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
               className="w-full bg-[#05020a]/80 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all duration-300"
@@ -481,7 +531,9 @@ const ContactForm = () => {
 
         {/* Dynamic Services Selector to Fill Space Beautifully */}
         <div className="space-y-3 pt-2">
-          <label className="text-xs text-neutral-400 font-medium block">Qaysi yo'nalishlar sizni ko'proq qiziqtiryapti?</label>
+          <label className="text-xs text-neutral-400 font-medium block">
+            {lang === 'uz' ? 'Qaysi yo\'nalishlar sizni ko\'proq qiziqtiryapti?' : 'Какие направления вас больше интересуют?'}
+          </label>
           <div className="flex flex-wrap gap-2">
             {servicesList.map((service) => {
               const isSelected = selectedServices.includes(service);
@@ -508,21 +560,25 @@ const ContactForm = () => {
           type="submit"
           className="w-full py-3 bg-gradient-to-r from-orange-500 via-amber-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20 active:scale-98 cursor-pointer"
         >
-          <span>Hamkorlikni boshlash</span>
+          <span>{lang === 'uz' ? 'Hamkorlikni boshlash' : 'Начать сотрудничество'}</span>
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </button>
 
         {/* Security / trust badge */}
         <div className="flex items-center justify-center gap-2 text-[10px] font-mono text-neutral-500">
           <Lock className="w-3 h-3 text-orange-500/60" />
-          <span>Ma'lumotlaringiz shifrlangan holda xavfsiz uzatiladi</span>
+          <span>
+            {lang === 'uz' 
+              ? 'Ma\'lumotlaringiz shifrlangan holda xavfsiz uzatiladi' 
+              : 'Ваши данные передаются в зашифрованном и безопасном виде'}
+          </span>
         </div>
       </div>
     </form>
   );
 };
 
-const MissionCard = () => {
+const MissionCard = ({ lang }) => {
   const cardRef = useRef(null);
   const dims = useRef({ w: 800, h: 250 });
 
@@ -709,6 +765,32 @@ const MissionCard = () => {
     }
   };
 
+  const t = {
+    uz: {
+      heading: "Tesseract agentligida biz :",
+      part1: "Tadbirkorlar va ekspertlarning ichidagi",
+      highlight1: "shaxsiyati va maqsadlarini",
+      part2: "strategiyaga ko'rinishiga keltirib, uni",
+      highlight2: "daromad keltiradigan brendga",
+      part3: "aylantirishga yordam beramiz."
+    },
+    ru: {
+      heading: "В агентстве Tesseract мы :",
+      part1: "Помогаем превратить",
+      highlight1: "личность и цели",
+      part2: "предпринимателей и экспертов в стратегию, трансформируя их в",
+      highlight2: "прибыльный бренд",
+      part3: "."
+    }
+  }[lang] || {
+    heading: "Tesseract agentligida biz :",
+    part1: "Tadbirkorlar va ekspertlarning ichidagi",
+    highlight1: "shaxsiyati va maqsadlarini",
+    part2: "strategiyaga ko'rinishiga keltirib, uni",
+    highlight2: "daromad keltiradigan brendga",
+    part3: "aylantirishga yordam beramiz."
+  };
+
   return (
     <div
       ref={cardRef}
@@ -790,7 +872,7 @@ const MissionCard = () => {
         {/* Left Column: Heading */}
         <div className="space-y-3 lg:w-1/3">
           <h2 className="font-display font-black text-3xl sm:text-4xl text-white leading-tight">
-            Tesseract agentligida biz :
+            {t.heading}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full" />
         </div>
@@ -798,16 +880,16 @@ const MissionCard = () => {
         {/* Right Column: Statement with highlighted keywords */}
         <div className="lg:w-2/3">
           <p className="text-xl sm:text-2xl font-light text-neutral-300 leading-relaxed tracking-wide font-sans">
-            Tadbirkorlar va ekspertlarning ichidagi{" "}
+            {t.part1}{" "}
             <span className="text-white font-semibold relative inline-block mx-1">
-              shaxsiyati va maqsadlarini
+              {t.highlight1}
               <span className="absolute bottom-1 left-0 w-full h-[1px] bg-orange-500/50" />
             </span>{" "}
-            strategiyaga ko'rinishiga keltirib, uni{" "}
+            {t.part2}{" "}
             <span className="text-orange-400 font-semibold bg-orange-500/5 px-2 py-0.5 rounded border border-orange-500/20 shadow-[0_0_15px_rgba(249,115,22,0.1)]">
-              daromad keltiradigan brendga
+              {t.highlight2}
             </span>{" "}
-            aylantirishga yordam beramiz.
+            {t.part3}
           </p>
         </div>
       </div>
@@ -818,12 +900,14 @@ const MissionCard = () => {
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [view, setView] = useState({ page: 'home', service: null });
+  const [lang, setLang] = useState('uz');
 
   if (view.page === 'service') {
     return (
       <ServicePage
         serviceName={view.service}
         onBack={() => setView({ page: 'home', service: null })}
+        lang={lang}
       />
     );
   }
@@ -848,23 +932,46 @@ function App() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             <a href="#solutions" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-              <Text_03 text="Xizmatlar" className="text-xs lg:text-sm font-medium" />
+              <Text_03 text={lang === 'uz' ? 'Xizmatlar' : 'Услуги'} className="text-xs lg:text-sm font-medium" />
             </a>
             <a href="#partners" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-              <Text_03 text="Hamkorlar" className="text-xs lg:text-sm font-medium" />
+              <Text_03 text={lang === 'uz' ? 'Hamkorlar' : 'Партнеры'} className="text-xs lg:text-sm font-medium" />
             </a>
             <a href="#why-us" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-              <Text_03 text="Afzalliklar" className="text-xs lg:text-sm font-medium" />
+              <Text_03 text={lang === 'uz' ? 'Afzalliklar' : 'Преимущества'} className="text-xs lg:text-sm font-medium" />
             </a>
             <a href="#metrics" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-              <Text_03 text="Natijalar" className="text-xs lg:text-sm font-medium" />
+              <Text_03 text={lang === 'uz' ? 'Natijalar' : 'Результаты'} className="text-xs lg:text-sm font-medium" />
             </a>
             <a href="#contact" className="text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-              <Text_03 text="Bog'lanish" className="text-xs lg:text-sm font-medium" />
+              <Text_03 text={lang === 'uz' ? 'Bog\'lanish' : 'Контакты'} className="text-xs lg:text-sm font-medium" />
             </a>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-1 bg-white/[0.03] border border-white/5 rounded-full p-0.5">
+              <button
+                onClick={() => setLang('uz')}
+                className={`px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
+                  lang === 'uz'
+                    ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md'
+                    : 'text-neutral-400 hover:text-neutral-200'
+                }`}
+              >
+                Uz
+              </button>
+              <button
+                onClick={() => setLang('ru')}
+                className={`px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
+                  lang === 'ru'
+                    ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md'
+                    : 'text-neutral-400 hover:text-neutral-200'
+                }`}
+              >
+                Ru
+              </button>
+            </div>
+
             <button
               onClick={() => {
                 const contactSection = document.getElementById('contact');
@@ -874,7 +981,7 @@ function App() {
               }}
               className="relative px-5 py-2 rounded-full border border-orange-500/50 text-orange-400 hover:bg-orange-500 hover:text-white font-semibold text-xs transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/10 flex items-center gap-1 group cursor-pointer"
             >
-              <Text_03 text="Bog'lanish" className="font-semibold text-xs" /> <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              <Text_03 text={lang === 'uz' ? 'Bog\'lanish' : 'Контакты'} className="font-semibold text-xs" /> <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
 
@@ -899,37 +1006,61 @@ function App() {
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
           >
-            <Text_03 text="Xizmatlar" className="text-lg font-medium" />
+            <Text_03 text={lang === 'uz' ? 'Xizmatlar' : 'Услуги'} className="text-lg font-medium" />
           </a>
           <a
             href="#partners"
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
           >
-            <Text_03 text="Hamkorlar" className="text-lg font-medium" />
+            <Text_03 text={lang === 'uz' ? 'Hamkorlar' : 'Партнеры'} className="text-lg font-medium" />
           </a>
           <a
             href="#why-us"
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
           >
-            <Text_03 text="Afzalliklar" className="text-lg font-medium" />
+            <Text_03 text={lang === 'uz' ? 'Afzalliklar' : 'Преимущества'} className="text-lg font-medium" />
           </a>
           <a
             href="#metrics"
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 border-b border-white/5 pb-2"
           >
-            <Text_03 text="Natijalar" className="text-lg font-medium" />
+            <Text_03 text={lang === 'uz' ? 'Natijalar' : 'Результаты'} className="text-lg font-medium" />
           </a>
           <a
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
             className="text-lg font-medium text-neutral-300 hover:text-white transition-all duration-300 pb-1"
           >
-            <Text_03 text="Bog'lanish" className="text-lg font-medium" />
+            <Text_03 text={lang === 'uz' ? 'Bog\'lanish' : 'Контакты'} className="text-lg font-medium" />
           </a>
-          <hr className="border-white/10 my-1" />
+          <div className="flex items-center justify-between border-t border-b border-white/5 py-3">
+            <span className="text-sm text-neutral-400 font-medium">{lang === 'uz' ? 'Tilni tanlash' : 'Выбор языка'}:</span>
+            <div className="flex items-center gap-1 bg-white/[0.03] border border-white/5 rounded-full p-0.5">
+              <button
+                onClick={() => setLang('uz')}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
+                  lang === 'uz'
+                    ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md'
+                    : 'text-neutral-400 hover:text-neutral-200'
+                }`}
+              >
+                Uz
+              </button>
+              <button
+                onClick={() => setLang('ru')}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
+                  lang === 'ru'
+                    ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md'
+                    : 'text-neutral-400 hover:text-neutral-200'
+                }`}
+              >
+                Ru
+              </button>
+            </div>
+          </div>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
@@ -940,7 +1071,7 @@ function App() {
             }}
             className="w-full text-center py-3.5 bg-gradient-to-r from-orange-500 via-amber-500 to-red-500 text-white font-bold rounded-full flex items-center justify-center gap-2 group shadow-lg shadow-orange-500/20 active:scale-95 transition-all cursor-pointer"
           >
-            <Text_03 text="Bog'lanish" className="font-bold text-base" /> <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <Text_03 text={lang === 'uz' ? 'Bog\'lanish' : 'Контакты'} className="font-bold text-base" /> <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
       </header>
@@ -952,21 +1083,36 @@ function App() {
           {/* Left Hero Content */}
           <ScrollReveal className="flex-1 flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-16 mt-2 md:mt-0" delay={150}>
             {/* Main Headline */}
-            <h1 className="font-display font-extrabold text-[8.5vw] sm:text-[6vw] md:text-[5.5vw] lg:text-[66px] tracking-tight leading-[1.15] mb-6 text-white space-y-2 w-full">
-              <div className="block whitespace-nowrap">Biznesingizni</div>
-              <div className="block whitespace-nowrap">
-                <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">tizimli</span>{" "}
-                <span>marketing</span>
-              </div>
-              <div className="block whitespace-nowrap flex items-center justify-center lg:justify-start gap-x-2 sm:gap-x-3">
-                <span>bilan</span>
-                <TextSlider text="o'stiramiz" className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent font-display font-extrabold text-[8.5vw] sm:text-[6vw] md:text-[5.5vw] lg:text-[66px]" />
-              </div>
-            </h1>
+            {lang === 'uz' ? (
+              <h1 className="font-display font-extrabold text-[8.5vw] sm:text-[6vw] md:text-[5.5vw] lg:text-[66px] tracking-tight leading-[1.15] mb-6 text-white space-y-2 w-full">
+                <div className="block whitespace-nowrap">Biznesingizni</div>
+                <div className="block whitespace-nowrap">
+                  <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">tizimli</span>{" "}
+                  <span>marketing</span>
+                </div>
+                <div className="block whitespace-nowrap flex items-center justify-center lg:justify-start gap-x-2 sm:gap-x-3">
+                  <span>bilan</span>
+                  <TextSlider text="o'stiramiz" className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent font-display font-extrabold text-[8.5vw] sm:text-[6vw] md:text-[5.5vw] lg:text-[66px]" />
+                </div>
+              </h1>
+            ) : (
+              <h1 className="font-display font-extrabold text-[7vw] sm:text-[5vw] md:text-[4.5vw] lg:text-[54px] tracking-tight leading-[1.15] mb-6 text-white space-y-2 w-full">
+                <div className="block whitespace-nowrap">Развиваем ваш</div>
+                <div className="block whitespace-nowrap">
+                  <span>бизнес с помощью</span>
+                </div>
+                <div className="block whitespace-nowrap flex items-center justify-center lg:justify-start gap-x-2 sm:gap-x-3">
+                  <span className="bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">системного</span>{" "}
+                  <span>маркетинга</span>
+                </div>
+              </h1>
+            )}
 
             {/* Description */}
             <p className="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-xl">
-              Biz taxmin qilmaymiz, isbotlaymiz. Muammoni tahlil qilamiz, yechim yaratamiz, natijani raqamda ko'rsatamiz.
+              {lang === 'uz'
+                ? "Biz taxmin qilmaymiz, isbotlaymiz. Muammoni tahlil qilamiz, yechim yaratamiz, natijani raqamda ko'rsatamiz."
+                : "Мы не предполагаем, мы доказываем. Анализируем проблему, создаем решение, показываем результат в цифрах."}
             </p>
           </ScrollReveal>
 
@@ -994,30 +1140,56 @@ function App() {
           <ScrollReveal delay={100}>
             <div className="text-center max-w-3xl mx-auto mb-10">
               <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-3 leading-tight">
-                Biz sizga qanday{" "}
-                <span className="relative inline-block px-4 py-1.5 mx-1">
-                  <span className="relative z-10 text-white">yechimlar</span>
-                  <svg
-                    className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105"
-                    viewBox="0 0 100 40"
-                    preserveAspectRatio="none"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path
-                      d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11"
-                    />
-                  </svg>
-                </span>{" "}
-                beramiz
+                {lang === 'uz' ? (
+                  <>
+                    Biz sizga qanday{" "}
+                    <span className="relative inline-block px-4 py-1.5 mx-1">
+                      <span className="relative z-10 text-white">yechimlar</span>
+                      <svg
+                        className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105"
+                        viewBox="0 0 100 40"
+                        preserveAspectRatio="none"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path
+                          d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11"
+                        />
+                      </svg>
+                    </span>{" "}
+                    beramiz
+                  </>
+                ) : (
+                  <>
+                    Какие{" "}
+                    <span className="relative inline-block px-4 py-1.5 mx-1">
+                      <span className="relative z-10 text-white">решения</span>
+                      <svg
+                        className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105"
+                        viewBox="0 0 100 40"
+                        preserveAspectRatio="none"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path
+                          d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11"
+                        />
+                      </svg>
+                    </span>{" "}
+                    мы предлагаем
+                  </>
+                )}
               </h2>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={200} yOffset={40}>
-            <BentoDemo onSelectService={(name) => setView({ page: 'service', service: name })} />
+            <BentoDemo lang={lang} onSelectService={(name) => setView({ page: 'service', service: name })} />
           </ScrollReveal>
         </div>
       </section>
@@ -1033,7 +1205,7 @@ function App() {
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <ScrollReveal delay={100} yOffset={35}>
-            <MissionCard />
+            <MissionCard lang={lang} />
           </ScrollReveal>
         </div>
       </section>
@@ -1053,7 +1225,7 @@ function App() {
           <ScrollReveal delay={100}>
             <div className="text-center max-w-3xl mx-auto mb-14">
               <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
-                Hamkorlarimiz
+                {lang === 'uz' ? 'Hamkorlarimiz' : 'Наши партнеры'}
               </h2>
             </div>
           </ScrollReveal>
@@ -1144,19 +1316,32 @@ function App() {
           <ScrollReveal delay={100}>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
-                Nima uchun{" "}
-                <span className="relative inline-block mx-1">
-                  70 dan ortiq
-                  <span className="absolute left-0 bottom-[-4px] w-full h-[3px] bg-gradient-to-r from-orange-500 to-amber-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.5)]" />
-                </span>{" "}
-                ekspert va tadbirkorlar bizni tanlashgan?
+                {lang === 'uz' ? (
+                  <>
+                    Nima uchun{" "}
+                    <span className="relative inline-block mx-1">
+                      70 dan ortiq
+                      <span className="absolute left-0 bottom-[-4px] w-full h-[3px] bg-gradient-to-r from-orange-500 to-amber-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.5)]" />
+                    </span>{" "}
+                    ekspert va tadbirkorlar bizni tanlashgan?
+                  </>
+                ) : (
+                  <>
+                    Почему более{" "}
+                    <span className="relative inline-block mx-1">
+                      70 экспертов
+                      <span className="absolute left-0 bottom-[-4px] w-full h-[3px] bg-gradient-to-r from-orange-500 to-amber-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.5)]" />
+                    </span>{" "}
+                    и предпринимателей выбрали нас?
+                  </>
+                )}
               </h2>
             </div>
           </ScrollReveal>
 
           {/* Mobile and Tablet Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-6 relative z-10">
-            {whyChooseUs.map((item, idx) => {
+            {(whyChooseUsData[lang] || whyChooseUsData.uz).map((item, idx) => {
               const xOffset = idx % 2 === 0 ? -30 : 30;
               return (
                 <ScrollReveal
@@ -1197,7 +1382,7 @@ function App() {
             </div>
 
             <div className="space-y-8 relative z-10">
-              {whyChooseUs.map((item, idx) => (
+              {(whyChooseUsData[lang] || whyChooseUsData.uz).map((item, idx) => (
                 <TimelineItem
                   key={item.title}
                   item={item}
@@ -1210,7 +1395,7 @@ function App() {
         </div>
       </section>
 
-      <Testimonials />
+      <Testimonials lang={lang} />
 
       {/* Metrics / Key Indicators Section */}
       <section className="relative border-t border-white/5 bg-[#05020a] py-20 lg:py-24 z-10 overflow-hidden" id="metrics">
@@ -1224,7 +1409,7 @@ function App() {
           <ScrollReveal delay={100}>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
-                Biznesingiz uchun asosiy natijalar
+                {lang === 'uz' ? 'Biznesingiz uchun asosiy natijalar' : 'Основные результаты для вашего бизнеса'}
               </h2>
             </div>
           </ScrollReveal>
@@ -1239,9 +1424,13 @@ function App() {
                   <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-500">
                     <TrendingUp className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-neutral-300">Mijoz oqimi & Taniqlilik o'sishi</h3>
+                  <h3 className="text-lg font-bold text-neutral-300">
+                    {lang === 'uz' ? "Mijoz oqimi & Taniqlilik o'sishi" : "Поток клиентов и рост узнаваемости"}
+                  </h3>
                   <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                    Mijozlarimiz biz bilan ishlagandan so'ng brend orqali keladigan mijoz oqimi va brend taniqliligi o'rtacha 1.8 barobarga oshadi.
+                    {lang === 'uz' 
+                      ? "Mijozlarimiz biz bilan ishlagandan so'ng brend orqali keladigan mijoz oqimi va brend taniqliligi o'rtacha 1.8 barobarga oshadi." 
+                      : "После работы с нами поток клиентов через бренд и узнаваемость бренда увеличиваются в среднем в 1,8 раза."}
                   </p>
                 </div>
                 <div className="flex flex-col items-center md:items-end justify-center w-full md:w-auto">
@@ -1263,9 +1452,13 @@ function App() {
                   <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-500 group-hover:text-white group-hover:border-amber-500 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-all duration-500">
                     <Video className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-neutral-300">Video Production sifati</h3>
+                  <h3 className="text-lg font-bold text-neutral-300">
+                    {lang === 'uz' ? "Video Production sifati" : "Качество видеопроизводства"}
+                  </h3>
                   <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                    Bizning video mahsulotlarimiz sifat va kreativlik bo'yicha O'zbekistonda yetakchi 10% talik reytingga kiradi.
+                    {lang === 'uz' 
+                      ? "Bizning video mahsulotlarimiz sifat va kreativlik bo'yicha O'zbekistonda yetakchi 10% talik reytingga kiradi." 
+                      : "Наши видеопродукты входят в топ-10% в Узбекистане по качеству и креативности."}
                   </p>
                 </div>
                 <div className="flex items-center justify-between w-full">
@@ -1286,9 +1479,13 @@ function App() {
                   <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-500">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-neutral-300">Kafolat ortig'i bilan</h3>
+                  <h3 className="text-lg font-bold text-neutral-300">
+                    {lang === 'uz' ? "Kafolat ortig'i bilan" : "Гарантия с избытком"}
+                  </h3>
                   <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                    Aksariyat mijozlarimiz bilan shartnomada kelishilgan kafolatlarimizni kamida 8 barobar ortig'i bilan bajarganmiz va barcha mijozlarimizga kafolatdan ortig'ini bajarishga harakat qilamiz.
+                    {lang === 'uz' 
+                      ? "Aksariyat mijozlarimiz bilan shartnomada kelishilgan kafolatlarimizni kamida 8 barobar ortig'i bilan bajarganmiz va barcha mijozlarimizga kafolatdan ortig'ini bajarishga harakat qilamiz." 
+                      : "С большинством наших клиентов мы перевыполнили договорные гарантии как минимум в 8 раз, и всегда стремимся превзойти ожидания всех наших клиентов."}
                   </p>
                 </div>
                 <div className="flex items-end justify-between w-full">
@@ -1311,9 +1508,13 @@ function App() {
                   <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-500">
                     <Users className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-neutral-300">Auditoriya qamrovi (Coverage)</h3>
+                  <h3 className="text-lg font-bold text-neutral-300">
+                    {lang === 'uz' ? "Auditoriya qamrovi (Coverage)" : "Охват аудитории"}
+                  </h3>
                   <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                    Bizning kampaniyalarimiz orqali umumiy hisobda 1,000,000 dan ortiq foydali auditoriya qamrab olindi.
+                    {lang === 'uz' 
+                      ? "Bizning kampaniyalarimiz orqali umumiy hisobda 1,000,000 dan ortiq foydali auditoriya qamrab olindi." 
+                      : "Через наши кампании был охвачен совокупный объем целевой аудитории более 1 000 000 человек."}
                   </p>
                 </div>
                 <div className="flex flex-col items-center md:items-end justify-center w-full md:w-auto">
@@ -1335,16 +1536,20 @@ function App() {
                   <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-500">
                     <DollarSign className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-neutral-300">Yordam berilgan umumiy sotuvlar</h3>
+                  <h3 className="text-xl font-bold text-neutral-300">
+                    {lang === 'uz' ? "Yordam berilgan umumiy sotuvlar" : "Общий объем сгенерированных продаж"}
+                  </h3>
                   <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                    Hamkorlarimiz bilan olib borilgan tizimli marketing va savdo strategiyalari natijasida umumiy hisobda 500,000 AQSh dollaridan ortiq sotuvlar hajmini shakllantirdik.
+                    {lang === 'uz' 
+                      ? "Hamkorlarimiz bilan olib borilgan tizimli marketing va savdo strategiyalari natijasida umumiy hisobda 500,000 AQSh dollaridan ortiq sotuvlar hajmini shakllantirdik." 
+                      : "В результате системного маркетинга и стратегий продаж, реализованных совместно с нашими партнерами, мы сгенерировали продажи на сумму более $500 000."}
                   </p>
                 </div>
                 <div className="flex flex-col items-center md:items-end justify-center bg-white/[0.02] border border-white/5 px-4 py-4 sm:px-8 sm:py-6 rounded-2xl backdrop-blur-sm w-full md:w-auto group-hover:border-orange-500/30 group-hover:bg-[#05020a]/80 group-hover:shadow-[0_0_25px_rgba(249,115,22,0.1)] transition-all duration-500">
                   <span className="text-3xl sm:text-5xl font-display font-black text-white group-hover:scale-105 transition-transform duration-500">$<LiveCounter />+</span>
                   <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider mt-1.5 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    Live Tracked Metric
+                    {lang === 'uz' ? 'Live Tracked Metric' : 'Отслеживается в реальном времени'}
                   </span>
                 </div>
               </div>
@@ -1372,25 +1577,50 @@ function App() {
           {/* Centered Heading */}
           <ScrollReveal className="text-center max-w-3xl mx-auto mb-16 space-y-8" delay={100}>
             <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
-              Agar hammasi tushunarli bo'lsa, birgina{" "}
-              <span className="relative inline-block px-4 py-1.5 mx-1">
-                <span className="relative z-10 text-white">savol</span>
-                <svg
-                  className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105"
-                  viewBox="0 0 100 40"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path
-                    d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11"
-                  />
-                </svg>
-              </span>{" "}
-              qoldi
+              {lang === 'uz' ? (
+                <>
+                  Agar hammasi tushunarli bo'lsa, birgina{" "}
+                  <span className="relative inline-block px-4 py-1.5 mx-1">
+                    <span className="relative z-10 text-white">savol</span>
+                    <svg
+                      className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105"
+                      viewBox="0 0 100 40"
+                      preserveAspectRatio="none"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path
+                        d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11"
+                      />
+                    </svg>
+                  </span>{" "}
+                  qoldi
+                </>
+              ) : (
+                <>
+                  Если всё понятно, остался всего один{" "}
+                  <span className="relative inline-block px-4 py-1.5 mx-1">
+                    <span className="relative z-10 text-white">вопрос</span>
+                    <svg
+                      className="absolute inset-0 w-full h-full text-orange-500/80 pointer-events-none z-0 scale-y-125 scale-x-105"
+                      viewBox="0 0 100 40"
+                      preserveAspectRatio="none"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path
+                        d="M92 10 C 60 4, 25 7, 8 18 C -5 27, 5 36, 35 38 C 65 40, 95 32, 98 22 C 100 12, 78 9, 70 11"
+                      />
+                    </svg>
+                  </span>
+                </>
+              )}
             </h2>
 
             {/* Styled Question Block */}
@@ -1415,17 +1645,35 @@ function App() {
               </div>
 
               <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-extrabold text-center leading-relaxed text-white">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white">
-                  Manfaatli hamkorlik qilishga tayyormisiz? <br />
-                  Agar javobingiz{" "}
-                </span>
-                <span className="relative inline-block text-orange-400 px-1.5 font-black">
-                  ha
-                  <span className="absolute bottom-1 left-0 w-full h-[3px] bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
-                </span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white">
-                  {" "}bo'lsa, biz shu yerdamiz.
-                </span>
+                {lang === 'uz' ? (
+                  <>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white">
+                      Manfaatli hamkorlik qilishga tayyormisiz? <br />
+                      Agar javobingiz{" "}
+                    </span>
+                    <span className="relative inline-block text-orange-400 px-1.5 font-black">
+                      ha
+                      <span className="absolute bottom-1 left-0 w-full h-[3px] bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+                    </span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white">
+                      {" "}bo'lsa, biz shu yerdamiz.
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white">
+                      Готовы ли вы к выгодному сотрудничеству? <br />
+                      Если ваш ответ{" "}
+                    </span>
+                    <span className="relative inline-block text-orange-400 px-1.5 font-black">
+                      да
+                      <span className="absolute bottom-1 left-0 w-full h-[3px] bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+                    </span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-white">
+                      , то мы здесь для вас.
+                    </span>
+                  </>
+                )}
               </h3>
             </div>
           </ScrollReveal>
@@ -1445,15 +1693,27 @@ function App() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                     </span>
-                    <span className="text-xs font-mono text-red-400 font-bold uppercase tracking-[0.25em]">Raqobat ogohlantirishi</span>
+                    <span className="text-xs font-mono text-red-400 font-bold uppercase tracking-[0.25em]">
+                      {lang === 'uz' ? 'Raqobat ogohlantirishi' : 'Предупреждение о конкуренции'}
+                    </span>
                   </div>
 
                   <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-white leading-tight tracking-tight">
-                    Siz tayyor bo'lmasangiz — <span className="bg-gradient-to-r from-red-400 via-rose-500 to-rose-400 bg-clip-text text-transparent font-black">raqobatchilaringiz</span> boshlashga allaqachon tayyor 😉
+                    {lang === 'uz' ? (
+                      <>
+                        Siz tayyor bo'lmasangiz — <span className="bg-gradient-to-r from-red-400 via-rose-500 to-rose-400 bg-clip-text text-transparent font-black">raqobatchilaringiz</span> boshlashga allaqachon tayyor 😉
+                      </>
+                    ) : (
+                      <>
+                        Если вы не готовы — ваши <span className="bg-gradient-to-r from-red-400 via-rose-500 to-rose-400 bg-clip-text text-transparent font-black">конкуренты</span> уже готовы начать 😉
+                      </>
+                    )}
                   </h3>
 
                   <p className="text-neutral-400 text-sm sm:text-base leading-relaxed font-light">
-                    Biznes olamida vaqt — eng qimmatli resurs. Har bir kechiktirilgan kun raqiblaringizga oldinga o'tib olish uchun yangi imkoniyat beradi.
+                    {lang === 'uz' 
+                      ? "Biznes olamida vaqt — eng qimmatli resurs. Har bir kechiktirilgan kun raqiblaringizga oldinga o'tib olish uchun yangi imkoniyat beradi." 
+                      : "В мире бизнеса время — самый ценный ресурс. Каждый упущенный день дает вашим конкурентам новую возможность вырваться вперед."}
                   </p>
                 </div>
               </div>
@@ -1462,7 +1722,7 @@ function App() {
             {/* Right side form */}
             <ScrollReveal className="w-full flex" delay={250} yOffset={45}>
               <div className="w-full h-full">
-                <ContactForm />
+                <ContactForm lang={lang} />
               </div>
             </ScrollReveal>
 
@@ -1484,7 +1744,7 @@ function App() {
               <div className="space-y-3">
                 <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display flex items-center gap-2">
                   <Globe2 className="w-4 h-4 text-orange-400" />
-                  Bizning Manzil
+                  {lang === 'uz' ? 'Bizning Manzil' : 'Наш адрес'}
                 </h4>
                 <div className="relative w-full h-[180px] rounded-2xl overflow-hidden border border-white/5 bg-[#05020a]/40 shadow-inner group">
                   <iframe
@@ -1501,7 +1761,7 @@ function App() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs text-orange-400 hover:text-orange-300 transition-colors mt-1 font-medium group"
                 >
-                  Google Maps'da ochish
+                  {lang === 'uz' ? "Google Maps'da ochish" : "Открыть на Google Maps"}
                   <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </a>
               </div>
@@ -1511,7 +1771,9 @@ function App() {
             <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-8">
               {/* Column 1: Services */}
               <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">Xizmatlar</h4>
+                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">
+                  {lang === 'uz' ? 'Xizmatlar' : 'Услуги'}
+                </h4>
                 <ul className="space-y-2.5 text-sm">
                   <li>
                     <a href="#solutions" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
@@ -1548,30 +1810,32 @@ function App() {
 
               {/* Column 2: Company */}
               <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">Kompaniya</h4>
+                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">
+                  {lang === 'uz' ? 'Kompaniya' : 'Компания'}
+                </h4>
                 <ul className="space-y-2.5 text-sm">
                   <li>
                     <a href="#about" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
                       <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-                      Biz haqimizda
+                      {lang === 'uz' ? 'Biz haqimizda' : 'О нас'}
                     </a>
                   </li>
                   <li>
                     <a href="#partners" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
                       <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-                      Hamkorlarimiz
+                      {lang === 'uz' ? 'Hamkorlarimiz' : 'Наши партнеры'}
                     </a>
                   </li>
                   <li>
                     <a href="#why-us" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
                       <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-                      Nima uchun biz?
+                      {lang === 'uz' ? 'Nima uchun biz?' : 'Почему мы?'}
                     </a>
                   </li>
                   <li>
                     <a href="#contact" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-1 group">
                       <ChevronRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-                      Bog'lanish
+                      {lang === 'uz' ? 'Bog\'lanish' : 'Контакты'}
                     </a>
                   </li>
                 </ul>
@@ -1579,29 +1843,38 @@ function App() {
 
               {/* Column 3: Metrics */}
               <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">Natijalarimiz</h4>
+                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">
+                  {lang === 'uz' ? 'Natijalarimiz' : 'Наши результаты'}
+                </h4>
                 <ul className="space-y-2.5 text-sm">
                   <li className="text-neutral-400 flex items-center gap-2">
-                    <span className="text-orange-400 font-bold text-xs">180%</span> Mijoz oqimi
+                    <span className="text-orange-400 font-bold text-xs font-display">180%</span>
+                    {lang === 'uz' ? 'Mijoz oqimi' : 'Поток клиентов'}
                   </li>
                   <li className="text-neutral-400 flex items-center gap-2">
-                    <span className="text-orange-400 font-bold text-xs">TOP 10%</span> Video production
+                    <span className="text-orange-400 font-bold text-xs font-display">TOP 10%</span>
+                    {lang === 'uz' ? 'Video production' : 'Видеопроизводство'}
                   </li>
                   <li className="text-neutral-400 flex items-center gap-2">
-                    <span className="text-orange-400 font-bold text-xs">8x</span> Kafolatlangan natija
+                    <span className="text-orange-400 font-bold text-xs font-display">8x</span>
+                    {lang === 'uz' ? 'Kafolatlangan natija' : 'Гарантированный результат'}
                   </li>
                   <li className="text-neutral-400 flex items-center gap-2">
-                    <span className="text-orange-400 font-bold text-xs">1M+</span> Qamrov darajasi
+                    <span className="text-orange-400 font-bold text-xs font-display">1M+</span>
+                    {lang === 'uz' ? 'Qamrov darajasi' : 'Охват аудитории'}
                   </li>
                   <li className="text-neutral-400 flex items-center gap-2">
-                    <span className="text-orange-400 font-bold text-xs">$500k+</span> Sotuvlar hajmi
+                    <span className="text-orange-400 font-bold text-xs font-display">$500k+</span>
+                    {lang === 'uz' ? 'Sotuvlar hajmi' : 'Объем продаж'}
                   </li>
                 </ul>
               </div>
 
               {/* Column 4: Socials */}
               <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">Ijtimoiy Tarmoqlar</h4>
+                <h4 className="text-sm font-semibold text-white tracking-wider uppercase font-display">
+                  {lang === 'uz' ? 'Ijtimoiy Tarmoqlar' : 'Социальные сети'}
+                </h4>
                 <ul className="space-y-2.5 text-sm">
                   <li>
                     <a href="https://www.instagram.com/tesseract_marketing/" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2">
@@ -1649,8 +1922,12 @@ function App() {
           {/* Bottom Row */}
           <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-500 border-t border-white/5">
             <div className="flex gap-6">
-              <a href="#" className="hover:text-neutral-300 transition-colors">Maxfiylik siyosati</a>
-              <a href="#" className="hover:text-neutral-300 transition-colors">Foydalanish shartlari</a>
+              <a href="#" className="hover:text-neutral-300 transition-colors">
+                {lang === 'uz' ? 'Maxfiylik siyosati' : 'Политика конфиденциальности'}
+              </a>
+              <a href="#" className="hover:text-neutral-300 transition-colors">
+                {lang === 'uz' ? 'Foydalanish shartlari' : 'Условия использования'}
+              </a>
             </div>
             <div className="font-mono">
               &copy; {new Date().getFullYear()} Tesseract Marketing. All rights reserved.

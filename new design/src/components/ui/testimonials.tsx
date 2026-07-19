@@ -24,7 +24,7 @@ const thirdColumnImages = [
   "/loyihalar/IMG_9517.PNG"
 ];
 
-export const Testimonials = () => {
+export const Testimonials = ({ lang = "uz" }: { lang?: "uz" | "ru" }) => {
   return (
     <section className="bg-transparent my-16 py-12 relative overflow-hidden" id="testimonials">
       {/* Background ambient glow */}
@@ -43,10 +43,12 @@ export const Testimonials = () => {
           className="flex flex-col items-center justify-center max-w-[640px] mx-auto text-center mb-12"
         >
           <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mt-2">
-            Bizga ishonch bildirgan Loyihalar
+            {lang === "uz" ? "Bizga ishonch bildirgan Loyihalar" : "Проекты, доверившие нам свой маркетинг"}
           </h2>
           <p className="mt-4 text-neutral-400 text-sm md:text-base max-w-lg leading-relaxed font-light">
-            Biznesingizni rivojlantirishga hissa qo'shgan va bizga o'z marketingini ishonib topshirgan yetakchi loyihalar va brendlar.
+            {lang === "uz"
+              ? "Biznesingizni rivojlantirishga hissa qo'shgan va bizga o'z marketingini ishonib topshirgan yetakchi loyihalar va brendlar."
+              : "Ведущие проекты и бренды, которым мы помогли вырасти, доверившие свой маркетинг нашей команде."}
           </p>
         </motion.div>
 
